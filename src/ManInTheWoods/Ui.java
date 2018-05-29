@@ -52,7 +52,7 @@ private final  Monster goblin = new Monster("Goblin", 10,4);
     titelNamePanel = new JPanel();
     titelNamePanel.setBounds(100,100,600,150);
     titelNamePanel.setBackground(Color.BLACK);
-    titelNameLabel = new JLabel("Man in the woods");
+    titelNameLabel = new JLabel("Siemen in the woods");
     titelNameLabel.setFont(titelFont);
     titelNameLabel.setForeground(Color.WHITE);
 
