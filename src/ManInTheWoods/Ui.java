@@ -2,6 +2,7 @@ package ManInTheWoods;
 
 import Domain.Monster;
 import Domain.Player;
+import Domain.Position;
 import Domain.Weapon;
 
 import javax.swing.*;
@@ -15,9 +16,9 @@ public class Ui{
 
     JFrame window;
     Container container;
-    JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
+    JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel, picturePanel;
     JLabel titelNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
-    JButton startButton,choice1, choice2, choice3, choice4;
+    JButton startButton,choice1, choice2, choice3, choice4,inventoryButton, inv1, inv2, inv3, inv4, inv5;
     JTextArea mainTextArea;
     Font titelFont = new Font("Times New Roman", Font.PLAIN, 62);
     Font gameFont = new Font("Times New Roman", Font.PLAIN,27);
@@ -32,147 +33,212 @@ private final  Monster goblin = new Monster("Goblin", 10,4);
    Player player = new Player(playerHP,knife);
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     ChoiceHandler choiceHandler = new ChoiceHandler();
-
+    InventoryHandler invHandler = new InventoryHandler();
 
 
     public Ui(){
 
  monsterHP = goblin.getMonsterHP();
 
- 
- 
-    window = new JFrame();
-    window.setSize(800,600);
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.getContentPane().setBackground(Color.BLACK);
-    window.setLayout(null);
-    window.setVisible(true);
-    container = window.getContentPane();
-
-    //creation of titellabel and titelpanel
-    titelNamePanel = new JPanel();
-    titelNamePanel.setBounds(100,100,600,150);
-    titelNamePanel.setBackground(Color.BLACK);
-    titelNameLabel = new JLabel("Siemen in the woods");
-    titelNameLabel.setFont(titelFont);
-    titelNameLabel.setForeground(Color.WHITE);
-
-    //creation of startbutton panel
-    startButtonPanel = new JPanel();
-    startButtonPanel.setBounds(300,400,200,100);
-    startButtonPanel.setBackground(Color.BLACK);
-
-    //creation of startbutton.
-    startButton = new JButton("START");
-    startButton.setBackground(Color.black);
-    startButton.setForeground(Color.white);
-    startButton.setFont(gameFont);
-    startButton.setFocusPainted(false);
-    startButton.addActionListener(tsHandler);
 
 
-    //adding on panels
-    titelNamePanel.add(titelNameLabel);
-    startButtonPanel.add(startButton);
+        window = new JFrame();
+        window.setSize(1200,800);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.getContentPane().setBackground(Color.BLACK);
+        window.setLayout(null);
+        window.setVisible(true);
+        container = window.getContentPane();
 
-    //adding to container
-    container.add(titelNamePanel);
-    container.add(startButtonPanel);
+        //creation of titellabel and titelpanel
+        titelNamePanel = new JPanel();
+        titelNamePanel.setBounds(100,100,1000,300);
+        titelNamePanel.setBackground(Color.BLACK);
+        titelNameLabel = new JLabel("Man in the woods");
+        titelNameLabel.setFont(titelFont);
+        titelNameLabel.setForeground(Color.WHITE);
+
+        //creation of startbutton panel
+        startButtonPanel = new JPanel();
+        startButtonPanel.setBounds(475,400,200,100);
+        startButtonPanel.setBackground(Color.BLACK);
+
+        //creation of startbutton.
+        startButton = new JButton("START");
+        startButton.setBackground(Color.black);
+        startButton.setForeground(Color.white);
+        startButton.setFont(gameFont);
+        startButton.setFocusPainted(false);
+        startButton.addActionListener(tsHandler);
+
+
+        //adding on panels
+        titelNamePanel.add(titelNameLabel);
+        startButtonPanel.add(startButton);
+
+        //adding to container
+        container.add(titelNamePanel);
+        container.add(startButtonPanel);
+
     }
 
 public void createGameScreen(){
 
-        titelNamePanel.setVisible(false);
-        startButtonPanel.setVisible(false);
+    titelNamePanel.setVisible(false);
+    startButtonPanel.setVisible(false);
 
-        mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(100,100,600,250);
-        mainTextPanel.setBackground(Color.black);
-        container.add(mainTextPanel);
+    mainTextPanel = new JPanel();
+    mainTextPanel.setBounds(25,500,600,250);
+    mainTextPanel.setBackground(Color.black);
+    container.add(mainTextPanel);
 
-        mainTextArea = new JTextArea();
-        mainTextArea.setBounds(100,100,600,250);
-        mainTextArea.setBackground(Color.black);
-        mainTextArea.setForeground(Color.white);
-        mainTextArea.setFont(gameFont);
-        mainTextArea.setLineWrap(true);
-        mainTextPanel.add(mainTextArea);
+    mainTextArea = new JTextArea();
+    mainTextArea.setBounds(100,100,600,250);
+    mainTextArea.setBackground(Color.yellow);
+    mainTextArea.setForeground(Color.white);
+    mainTextArea.setFont(gameFont);
+    mainTextArea.setLineWrap(true);
+    mainTextPanel.add(mainTextArea);
 
-        //Creation choice button panel
-        choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(250,350,300,150);
-        choiceButtonPanel.setBackground(Color.black);
-        choiceButtonPanel.setLayout(new GridLayout(4,1));
-        container.add(choiceButtonPanel);
+    //Creation choice button panel
+    choiceButtonPanel = new JPanel();
+    choiceButtonPanel.setBounds(830,550,300,150);
+    choiceButtonPanel.setBackground(Color.BLACK);
+    choiceButtonPanel.setLayout(new GridLayout(5,1));
+    container.add(choiceButtonPanel);
 
-        //creation choice button 1
-        choice1 = new JButton();
-        choice1.setBackground(Color.black);
-        choice1.setForeground(Color.white);
-        choice1.setFont(gameFont);
-        choice1.setFocusPainted(false);
-        choice1.addActionListener(choiceHandler);
-        choice1.setActionCommand("c1");
-        choiceButtonPanel.add(choice1);
+    //creation choice button 1
+    choice1 = new JButton();
+    choice1.setBackground(Color.black);
+    choice1.setForeground(Color.white);
+    choice1.setFont(gameFont);
+    choice1.setFocusPainted(false);
+    choice1.addActionListener(choiceHandler);
+    choice1.setActionCommand("c1");
+    choiceButtonPanel.add(choice1);
 
-        //creation button 2
-        choice2 = new JButton();
-        choice2.setBackground(Color.white);
-        choice2.setForeground(Color.black);
-        choice2.setFont(gameFont);
-        choice2.setFocusPainted(false);
-        choice2.addActionListener(choiceHandler);
-        choice2.setActionCommand("c2");
-        choiceButtonPanel.add(choice2);
+    //creation button 2
+    choice2 = new JButton();
+    choice2.setBackground(Color.black);
+    choice2.setForeground(Color.white);
+    choice2.setFont(gameFont);
+    choice2.setFocusPainted(false);
+    choice2.addActionListener(choiceHandler);
+    choice2.setActionCommand("c2");
+    choiceButtonPanel.add(choice2);
 
-        //creation button 3
-        choice3 = new JButton();
-        choice3.setBackground(Color.black);
-        choice3.setForeground(Color.white);
-        choice3.setFont(gameFont);
-        choice3.setFocusPainted(false);
-        choice3.addActionListener(choiceHandler);
-        choice3.setActionCommand("c3");
-        choiceButtonPanel.add(choice3);
+    //creation button 3
+    choice3 = new JButton();
+    choice3.setBackground(Color.black);
+    choice3.setForeground(Color.white);
+    choice3.setFont(gameFont);
+    choice3.setFocusPainted(false);
+    choice3.addActionListener(choiceHandler);
+    choice3.setActionCommand("c3");
+    choiceButtonPanel.add(choice3);
 
-        //creation button 4
-        choice4 = new JButton();
-        choice4.setBackground(Color.white);
-        choice4.setForeground(Color.black);
-        choice4.setFont(gameFont);
-        choice4.setFocusPainted(false);
-        choice4.addActionListener(choiceHandler);
-        choice4.setActionCommand("c4");
-        choiceButtonPanel.add(choice4);
+    //creation button 4
+    choice4 = new JButton();
+    choice4.setBackground(Color.black);
+    choice4.setForeground(Color.white);
+    choice4.setFont(gameFont);
+    choice4.setFocusPainted(false);
+    choice4.addActionListener(choiceHandler);
+    choice4.setActionCommand("c4");
+    choiceButtonPanel.add(choice4);
 
-        playerPanel = new JPanel();
-        playerPanel.setBounds(100,15,600,50);
-        playerPanel.setBackground(Color.darkGray);
-        playerPanel.setLayout(new GridLayout(1,4));
-        container.add(playerPanel);
+    //creation inventory button
+    inventoryButton = new JButton("Inventory");
+    inventoryButton.setBackground(Color.black);
+    inventoryButton.setForeground(Color.white);
+    inventoryButton.setFont(gameFont);
+    inventoryButton.addActionListener(invHandler);
+    choiceButtonPanel.add(inventoryButton);
 
-        hpLabel = new JLabel("Hp:");
-        hpLabel.setFont(gameFont);
-        hpLabel.setForeground(Color.WHITE);
-        playerPanel.add(hpLabel);
-        hpLabelNumber = new JLabel();
-        hpLabelNumber.setFont(gameFont);
-        hpLabelNumber.setForeground(Color.WHITE);
-        playerPanel.add(hpLabelNumber);
+    //creation inventory panel
+    inventoryPanel = new JPanel();
+    inventoryPanel.setBounds(830,15,300,450);
+    inventoryPanel.setLayout(new GridLayout(5,1));
+    inventoryPanel.setVisible(true);
+    inventoryPanel.setBackground(Color.GREEN);
+    inventoryPanel.setForeground(Color.WHITE);
+    container.add(inventoryPanel);
 
-        weaponLabel = new JLabel("Weapon:");
-        weaponLabel.setFont(gameFont);
-        weaponLabel.setForeground(Color.WHITE);
-        playerPanel.add(weaponLabel);
 
-        weaponLabelName = new JLabel();
-        weaponLabelName.setFont(gameFont);
-        weaponLabelName.setForeground(Color.WHITE);
-        playerPanel.add(weaponLabelName);
+    //creation inventory button.
+    inv1 = new JButton();
+    inv1.setForeground(Color.WHITE);
+    inv1.setBackground(Color.black);
+    inv1.setVisible(true);
+    inv1.setFont(gameFont);
+    inventoryPanel.add(inv1);
+
+    inv2 = new JButton();
+    inv2.setForeground(Color.WHITE);
+    inv2.setBackground(Color.black);
+    inv2.setVisible(true);
+    inv2.setFont(gameFont);
+    inventoryPanel.add(inv2);
+
+    inv3 = new JButton();
+    inv3.setForeground(Color.WHITE);
+    inv3.setBackground(Color.black);
+    inv3.setVisible(true);
+    inv3.setFont(gameFont);
+    inventoryPanel.add(inv3);
+
+    inv4 = new JButton();
+    inv4.setForeground(Color.WHITE);
+    inv4.setBackground(Color.black);
+    inv4.setVisible(true);
+    inv4.setFont(gameFont);
+    inventoryPanel.add(inv4);
+
+    inv5 = new JButton();
+    inv5.setForeground(Color.WHITE);
+    inv5.setBackground(Color.black);
+    inv5.setVisible(true);
+    inv5.setFont(gameFont);
+    inventoryPanel.add(inv5);
+
+
+
+    //Creation picture panel
+    picturePanel = new JPanel();
+    picturePanel.setBounds(15,15,800,450);
+    picturePanel.setBackground(Color.green);
+    container.add(picturePanel);
+
+    playerPanel = new JPanel();
+    playerPanel.setBounds(830,470,300,75);
+    playerPanel.setBackground(Color.darkGray);
+    playerPanel.setLayout(new GridLayout(2,2));
+    container.add(playerPanel);
+
+    hpLabel = new JLabel("Hp:");
+    hpLabel.setFont(gameFont);
+    hpLabel.setForeground(Color.WHITE);
+    playerPanel.add(hpLabel);
+    hpLabelNumber = new JLabel();
+    hpLabelNumber.setFont(gameFont);
+    hpLabelNumber.setForeground(Color.WHITE);
+    playerPanel.add(hpLabelNumber);
+
+    weaponLabel = new JLabel("Weapon:");
+    weaponLabel.setFont(gameFont);
+    weaponLabel.setForeground(Color.WHITE);
+    playerPanel.add(weaponLabel);
+
+    weaponLabelName = new JLabel();
+    weaponLabelName.setFont(gameFont);
+    weaponLabelName.setForeground(Color.WHITE);
+    playerPanel.add(weaponLabelName);
 
         playerSetup();
 
     }
+
+
 
 
     public void playerSetup(){
@@ -517,6 +583,18 @@ public void  northEmpty(){
                         case "c1": quitGame(); break;
                     }break;
             }
+
+        }
+    }
+
+    public class InventoryHandler implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+
+            if (inventoryPanel.isVisible()){
+                inventoryPanel.setVisible(false);
+            }else inventoryPanel.setVisible(true);
 
         }
     }
