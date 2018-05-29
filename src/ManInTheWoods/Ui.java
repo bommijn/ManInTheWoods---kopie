@@ -23,6 +23,7 @@ public class Ui{
     Font gameFont = new Font("Times New Roman", Font.PLAIN,27);
     int playerHP, silverRing;
     int monsterHP;
+    boolean canDrink = true;
     String weapon, position;
     
     private final Weapon  knife = new Weapon("knife",3);
@@ -238,10 +239,18 @@ public void createGameScreen(){
         choice4.setText("Go west");
 
     }
-
+public void  northEmpty(){
+        position = "northempty";
+        mainTextArea.setText("The river has dried up,\nNothing to do here/");
+        choice1.setText("Go south");
+        choice2.setText("");
+        choice3.setText("");
+        choice4.setText("");
+}
 
     public void north(){
         position = "north";
+        canDrink = false;
         mainTextArea.setText("There is a river. \nyou drink the watter and rest at the riverside. \n(Your hp has recovered by 2)");
         playerHP = playerHP + 2;
         hpLabelNumber.setText("" + playerHP);
@@ -263,6 +272,8 @@ public void createGameScreen(){
     }
     public void east(){
         position = "east";
+
+
         mainTextArea.setText("You walk into a forest and found a Long Sword \n\n(You obtained a Long Sword!)");
         player.setWeapon(longsword);
 //        weapon = "Long Sword";
@@ -434,7 +445,8 @@ public void createGameScreen(){
 
                 case "crossRoad":
                     switch (yourChoice){
-                        case "c1": north(); break;
+                        case "c1":if(canDrink){ north();}
+                                  else northEmpty(); break;
                         case "c2": east(); break;
                         case "c3": townGate(); break;
                         case "c4": west();  break;
@@ -446,6 +458,11 @@ public void createGameScreen(){
                         case "c2": break;
                         case "c3": break;
                         case "c4": break;
+                    }break;
+
+                case "northempty":
+                    switch (yourChoice){
+                        case "c1": crossRoad(); break;
                     }break;
 
                 case "east":
