@@ -1,9 +1,6 @@
 package ManInTheWoods;
 
-import Domain.Monster;
-import Domain.Player;
-import Domain.Position;
-import Domain.Weapon;
+import Domain.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +15,7 @@ public class Ui{
     Container container;
     JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel, picturePanel;
     JLabel titelNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
-    JButton startButton,choice1, choice2, choice3, choice4,inventoryButton, inv1, inv2, inv3, inv4, inv5;
+    JButton startButton,choice1, choice2, choice3, choice4,inventoryButton, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8;
     JTextArea mainTextArea;
     Font titelFont = new Font("Times New Roman", Font.PLAIN, 62);
     Font gameFont = new Font("Times New Roman", Font.PLAIN,27);
@@ -26,7 +23,10 @@ public class Ui{
     int monsterHP;
     boolean canDrink = true;
     String weapon, position;
-    
+
+    Item[] inventorySlot = new Item[8];
+    Item potion = new Item("pooooot", 5);
+
     private final Weapon  knife = new Weapon("knife",3);
 private final Weapon  longsword = new Weapon("longsword",7);
 private final  Monster goblin = new Monster("Goblin", 10,4);
@@ -94,7 +94,7 @@ public void createGameScreen(){
 
     mainTextArea = new JTextArea();
     mainTextArea.setBounds(100,100,600,250);
-    mainTextArea.setBackground(Color.yellow);
+    mainTextArea.setBackground(Color.BLACK);
     mainTextArea.setForeground(Color.white);
     mainTextArea.setFont(gameFont);
     mainTextArea.setLineWrap(true);
@@ -153,14 +153,15 @@ public void createGameScreen(){
     inventoryButton.setForeground(Color.white);
     inventoryButton.setFont(gameFont);
     inventoryButton.addActionListener(invHandler);
+    inventoryButton.setActionCommand("invbutton");
     choiceButtonPanel.add(inventoryButton);
 
     //creation inventory panel
     inventoryPanel = new JPanel();
     inventoryPanel.setBounds(830,15,300,450);
-    inventoryPanel.setLayout(new GridLayout(5,1));
-    inventoryPanel.setVisible(true);
-    inventoryPanel.setBackground(Color.GREEN);
+    inventoryPanel.setLayout(new GridLayout(8,1));
+    inventoryPanel.setVisible(false);
+    inventoryPanel.setBackground(Color.BLACK);
     inventoryPanel.setForeground(Color.WHITE);
     container.add(inventoryPanel);
 
@@ -171,6 +172,7 @@ public void createGameScreen(){
     inv1.setBackground(Color.black);
     inv1.setVisible(true);
     inv1.setFont(gameFont);
+    inv1.setActionCommand("iv1");
     inventoryPanel.add(inv1);
 
     inv2 = new JButton();
@@ -178,6 +180,7 @@ public void createGameScreen(){
     inv2.setBackground(Color.black);
     inv2.setVisible(true);
     inv2.setFont(gameFont);
+    inv2.setActionCommand("iv2");
     inventoryPanel.add(inv2);
 
     inv3 = new JButton();
@@ -185,6 +188,7 @@ public void createGameScreen(){
     inv3.setBackground(Color.black);
     inv3.setVisible(true);
     inv3.setFont(gameFont);
+    inv3.setActionCommand("iv3");
     inventoryPanel.add(inv3);
 
     inv4 = new JButton();
@@ -192,6 +196,7 @@ public void createGameScreen(){
     inv4.setBackground(Color.black);
     inv4.setVisible(true);
     inv4.setFont(gameFont);
+    inv4.setActionCommand("iv4");
     inventoryPanel.add(inv4);
 
     inv5 = new JButton();
@@ -199,7 +204,33 @@ public void createGameScreen(){
     inv5.setBackground(Color.black);
     inv5.setVisible(true);
     inv5.setFont(gameFont);
+    inv5.setActionCommand("iv5");
     inventoryPanel.add(inv5);
+
+    inv6 = new JButton();
+    inv6.setForeground(Color.WHITE);
+    inv6.setBackground(Color.black);
+    inv6.setVisible(true);
+    inv6.setFont(gameFont);
+    inv6.setActionCommand("iv6");
+    inventoryPanel.add(inv6);
+
+    inv7 = new JButton();
+    inv7.setForeground(Color.WHITE);
+    inv7.setBackground(Color.black);
+    inv7.setVisible(true);
+    inv7.setFont(gameFont);
+    inv7.setActionCommand("iv7");
+    inventoryPanel.add(inv7);
+
+    inv8 = new JButton();
+    inv8.setForeground(Color.WHITE);
+    inv8.setBackground(Color.black);
+    inv8.setVisible(true);
+    inv8.setFont(gameFont);
+    inv8.setActionCommand("iv8");
+    inventoryPanel.add(inv8);
+
 
 
 
@@ -238,7 +269,10 @@ public void createGameScreen(){
 
     }
 
-
+public void itemUsed(int inventoryspot){
+        playerHP = playerHP + inventorySlot[inventoryspot].getHealingValue();
+        hpLabelNumber.setText("" + playerHP);
+}
 
 
     public void playerSetup(){
@@ -256,6 +290,17 @@ public void createGameScreen(){
         choice2.setVisible(true);
         choice3.setVisible(true);
         choice4.setVisible(true);
+
+        inventorySlot[0] = potion;
+        inventorySlot[1] = null;
+        inventorySlot[2] = null;
+        inventorySlot[3] = null;
+        inventorySlot[4] = null;
+        inventorySlot[5] = null;
+        inventorySlot[6] = null;
+        inventorySlot[7] = null;
+
+
         townGate();
     }
 
@@ -592,10 +637,61 @@ public void  northEmpty(){
         @Override
         public void actionPerformed(ActionEvent event) {
 
-            if (inventoryPanel.isVisible()){
-                inventoryPanel.setVisible(false);
-            }else inventoryPanel.setVisible(true);
+            String buttonPressed = event.getActionCommand();
 
+            switch (buttonPressed) {
+                case "invbutton":
+                    if (inventoryPanel.isVisible()) {
+                        inventoryPanel.setVisible(false);
+                    } else {inventoryPanel.setVisible(true);
+
+                    if (inventorySlot[0] != null){inv1.setText(inventorySlot[0].getName());}
+                    else{ inv1.setText("");}
+                    if (inventorySlot[1] != null){inv2.setText(inventorySlot[1].getName());}
+                    else{ inv2.setText("");}
+                    if (inventorySlot[2] != null){inv3.setText(inventorySlot[2].getName());}
+                    else{ inv3.setText("");}
+                    if (inventorySlot[3] != null){inv4.setText(inventorySlot[3].getName());}
+                    else{ inv4.setText("");}
+                    if (inventorySlot[4] != null){inv5.setText(inventorySlot[4].getName());}
+                    else{ inv5.setText("");}
+                    if (inventorySlot[5] != null){inv6.setText(inventorySlot[5].getName());}
+                    else{ inv6.setText("");}
+                    if (inventorySlot[6] != null){ inv7.setText(inventorySlot[6].getName());}
+                    else{ inv7.setText("");}
+                    if (inventorySlot[7] != null){ inv8.setText(inventorySlot[7].getName());}
+                    else{ inv8.setText("");}
+                    }
+                    break;
+
+                case "iv1":
+                    itemUsed(0);
+                    break;
+                case "iv2":
+                    itemUsed(1);
+                    break;
+                case "iv3":
+                    itemUsed(2);
+                    break;
+                case "iv4":
+                    itemUsed(3);
+                    break;
+                case "iv5":
+                    itemUsed(4);
+                    break;
+                case "iv6":
+                    itemUsed(5);
+                    break;
+                case "iv7":
+                    itemUsed(6);
+                    break;
+                case "iv8":
+                    itemUsed(7);
+                    break;
+
+
+
+            }
         }
     }
 
