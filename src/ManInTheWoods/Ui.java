@@ -237,8 +237,8 @@ public class Ui {
 
         //Creation picture panel
         picturePanel = new JPanel();
-        picturePanel.setBounds(15, 15, 800, 450);
-        picturePanel.setBackground(Color.green);
+        picturePanel.setBounds(50, 50, 400, 250);
+        picturePanel.setBackground(Color.black);
         container.add(picturePanel);
 
         playerPanel = new JPanel();
@@ -314,11 +314,13 @@ public class Ui {
             }
 
         } else if (inventory.getItems().get(inventoryspot).getDmgValue() > 0) {
-
+            
+            inventory.getItems().add(player.getWeapon());
             player.setWeapon(inventory.getItems().get(inventoryspot));
             weapon = inventory.getItems().get(inventoryspot).getName();
             weaponLabelName.setText(player.getWeapon().getName());
             inventory.getItems().remove(inventoryspot);
+            
             switch (inventoryspot) {
                 case 0:
                     inv1.setText("");
@@ -389,20 +391,20 @@ public class Ui {
 
         townGate();
     }
-public void resizeImage(ImageIcon townsgate){
 
+    public void resizeImage(ImageIcon townsgate) {
 
+    }
 
-}
     public void townGate() {
         mainTextArea.setText("You are at the gates of the town. \nA guard is standing in front of you. \n\nWhat do you do? ");
         position = "townGate";
 
         ImageIcon townsgate = new ImageIcon(getClass().getClassLoader().getResource("Images/townsgate.png"));
-        
 
         picturePanel.add(new JLabel(townsgate));
-
+//ImageIcon townsgate = new ImageIcon("Images/townsgate.png");
+//picturePanel.set
         choice1.setText("Talk to the guard");
         choice2.setText("Attack the guard.");
         choice3.setText("leave");
@@ -734,6 +736,7 @@ public void resizeImage(ImageIcon townsgate){
                             northEmpty();
                             break;
                         case "c2":
+
                             getItem();
                     }
                     break;
