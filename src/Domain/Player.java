@@ -14,14 +14,14 @@ public class Player {
     
     private String playerName;
     private int playerHp;
-    private Weapon weapon;
-    public Player( int playerHp, Weapon weapon){
+    private Item weapon;
+    public Player( int playerHp, Item weapon){
 
     setPlayerHp(playerHp);
-    
+    setWeapon(weapon);
     }
 
-    public Weapon getWeapon() {
+    public Item getWeapon() {
         return weapon;
     }
 
@@ -41,7 +41,7 @@ public class Player {
         return playerHp;
     }
 
-    public void setWeapon(Weapon weapon) {
+    public void setWeapon(Item weapon) {
         this.weapon = weapon;
     }
     

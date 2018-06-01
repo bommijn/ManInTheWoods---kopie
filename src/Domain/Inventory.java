@@ -1,14 +1,25 @@
 package Domain;
 
-public class Inventory {
-    private String name;
+import java.util.ArrayList;
 
-    public Inventory(String name){
-        this.name = name;
+public  class Inventory {
+    
+   ArrayList<Item> items;
+
+    public Inventory(){
+        this.items = new ArrayList<>();
+       
+   
     }
 
-    public String getName() {
-        return name;
+    public ArrayList<Item> getItems() {
+        return items;
     }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    
 
 }
