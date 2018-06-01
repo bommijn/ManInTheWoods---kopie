@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Random;
 
 public class Ui {
@@ -268,22 +270,74 @@ public class Ui {
 
     }
 
+    public void initInventory() {
+
+        inv1.setText(inventory.getItems().get(0).getName());
+
+        inv2.setText(inventory.getItems().get(1).getName());
+        inv3.setText(inventory.getItems().get(2).getName());
+
+        inv4.setText(inventory.getItems().get(3).getName());
+        inv5.setText(inventory.getItems().get(4).getName());
+        inv6.setText(inventory.getItems().get(5).getName());
+        inv7.setText(inventory.getItems().get(6).getName());
+        inv8.setText(inventory.getItems().get(7).getName());
+    }
+
     public void itemUsed(int inventoryspot) {
+
+        String removeString = String.format("inv%d", inventoryspot);
 
         if (inventory.getItems().get(inventoryspot).getHealingValue() > 0) {
 
             playerHP = playerHP + inventory.getItems().get(inventoryspot).getHealingValue();
             hpLabelNumber.setText("" + playerHP);
-//            inventory.getItems().remove(inventoryspot);
-       
-            
-         
-        } else if (inventory.getItems().get(inventoryspot).getHealingValue() == 0) {
+            inventory.getItems().remove(inventoryspot);
+            switch (inventoryspot) {
+                case 0:
+                    inv1.setText("");
+                case 1:
+                    inv2.setText("");
+                case 2:
+                    inv3.setText("");
+                case 3:
+                    inv4.setText("");
+                case 4:
+                    inv5.setText("");
+                case 5:
+                    inv6.setText("");
+                case 6:
+                    inv7.setText("");
+                case 7:
+                    inv8.setText("");
+
+            }
+
+        } else if (inventory.getItems().get(inventoryspot).getDmgValue() > 0) {
 
             player.setWeapon(inventory.getItems().get(inventoryspot));
             weapon = inventory.getItems().get(inventoryspot).getName();
             weaponLabelName.setText(player.getWeapon().getName());
             inventory.getItems().remove(inventoryspot);
+            switch (inventoryspot) {
+                case 0:
+                    inv1.setText("");
+                case 1:
+                    inv2.setText("");
+                case 2:
+                    inv3.setText("");
+                case 3:
+                    inv4.setText("");
+                case 4:
+                    inv5.setText("");
+                case 5:
+                    inv6.setText("");
+                case 6:
+                    inv7.setText("");
+                case 7:
+                    inv8.setText("");
+
+            }
 //          inventory.getItems().get(inventoryspot);
 
 //           if (inventoryspot == 0) {
@@ -304,7 +358,7 @@ public class Ui {
 //               inv8.setText("");
 //           }
         }
-     
+        initInventory();
     }
 
     public void playerSetup() {
@@ -335,10 +389,19 @@ public class Ui {
 
         townGate();
     }
+public void resizeImage(ImageIcon townsgate){
 
+
+
+}
     public void townGate() {
         mainTextArea.setText("You are at the gates of the town. \nA guard is standing in front of you. \n\nWhat do you do? ");
         position = "townGate";
+
+        ImageIcon townsgate = new ImageIcon(getClass().getClassLoader().getResource("Images/townsgate.png"));
+        
+
+        picturePanel.add(new JLabel(townsgate));
 
         choice1.setText("Talk to the guard");
         choice2.setText("Attack the guard.");
@@ -431,16 +494,7 @@ public class Ui {
 //            mainTextArea.setText("Woman: You cant hold anymore of my potions.");
 //        }
 
-            inv1.setText(inventory.getItems().get(0).getName());
-
-            inv2.setText(inventory.getItems().get(1).getName());
-            inv3.setText(inventory.getItems().get(2).getName());
-
-            inv4.setText(inventory.getItems().get(3).getName());
-            inv5.setText(inventory.getItems().get(4).getName());
-            inv6.setText(inventory.getItems().get(5).getName());
-            inv7.setText(inventory.getItems().get(6).getName());
-            inv8.setText(inventory.getItems().get(7).getName());
+            initInventory();
 
             choice1.setText(">");
             choice2.setText("Go south");
@@ -480,20 +534,12 @@ public class Ui {
 ////        weapon = "Long Sword";
 //        weaponLabelName.setText(player.getWeapon().getName());
         inventory.getItems().add(longsword);
-        inv1.setText(inventory.getItems().get(0).getName());
 
-        inv2.setText(inventory.getItems().get(1).getName());
-        inv3.setText(inventory.getItems().get(2).getName());
-
-        inv4.setText(inventory.getItems().get(3).getName());
-        inv5.setText(inventory.getItems().get(4).getName());
-        inv6.setText(inventory.getItems().get(5).getName());
-        inv7.setText(inventory.getItems().get(6).getName());
-        inv8.setText(inventory.getItems().get(7).getName());
         choice1.setText("Go west");
         choice2.setText("");
         choice3.setText("");
         choice4.setText("");
+        initInventory();
     }
 
     public void fightGoblin() {
