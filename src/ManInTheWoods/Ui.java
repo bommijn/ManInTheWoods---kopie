@@ -25,7 +25,7 @@ public class Ui{
     String weapon, position;
 
     Item[] inventorySlot = new Item[8];
-    Item potion = new Item("pooooot", 5);
+    Item potion = new Item("Potion", 5);
 
     private final Weapon  knife = new Weapon("knife",3);
 private final Weapon  longsword = new Weapon("longsword",7);
@@ -172,6 +172,7 @@ public void createGameScreen(){
     inv1.setBackground(Color.black);
     inv1.setVisible(true);
     inv1.setFont(gameFont);
+    inv1.addActionListener(invHandler);
     inv1.setActionCommand("iv1");
     inventoryPanel.add(inv1);
 
@@ -180,6 +181,7 @@ public void createGameScreen(){
     inv2.setBackground(Color.black);
     inv2.setVisible(true);
     inv2.setFont(gameFont);
+    inv2.addActionListener(invHandler);
     inv2.setActionCommand("iv2");
     inventoryPanel.add(inv2);
 
@@ -188,6 +190,7 @@ public void createGameScreen(){
     inv3.setBackground(Color.black);
     inv3.setVisible(true);
     inv3.setFont(gameFont);
+    inv3.addActionListener(invHandler);
     inv3.setActionCommand("iv3");
     inventoryPanel.add(inv3);
 
@@ -196,6 +199,7 @@ public void createGameScreen(){
     inv4.setBackground(Color.black);
     inv4.setVisible(true);
     inv4.setFont(gameFont);
+    inv4.addActionListener(invHandler);
     inv4.setActionCommand("iv4");
     inventoryPanel.add(inv4);
 
@@ -204,6 +208,7 @@ public void createGameScreen(){
     inv5.setBackground(Color.black);
     inv5.setVisible(true);
     inv5.setFont(gameFont);
+    inv5.addActionListener(invHandler);
     inv5.setActionCommand("iv5");
     inventoryPanel.add(inv5);
 
@@ -212,6 +217,7 @@ public void createGameScreen(){
     inv6.setBackground(Color.black);
     inv6.setVisible(true);
     inv6.setFont(gameFont);
+    inv6.addActionListener(invHandler);
     inv6.setActionCommand("iv6");
     inventoryPanel.add(inv6);
 
@@ -220,6 +226,7 @@ public void createGameScreen(){
     inv7.setBackground(Color.black);
     inv7.setVisible(true);
     inv7.setFont(gameFont);
+    inv7.addActionListener(invHandler);
     inv7.setActionCommand("iv7");
     inventoryPanel.add(inv7);
 
@@ -228,6 +235,7 @@ public void createGameScreen(){
     inv8.setBackground(Color.black);
     inv8.setVisible(true);
     inv8.setFont(gameFont);
+    inv8.addActionListener(invHandler);
     inv8.setActionCommand("iv8");
     inventoryPanel.add(inv8);
 
@@ -270,9 +278,36 @@ public void createGameScreen(){
     }
 
 public void itemUsed(int inventoryspot){
-        playerHP = playerHP + inventorySlot[inventoryspot].getHealingValue();
-        hpLabelNumber.setText("" + playerHP);
-}
+
+       if (inventorySlot[inventoryspot] != null) {
+
+           playerHP = playerHP + inventorySlot[inventoryspot].getHealingValue();
+           hpLabelNumber.setText("" + playerHP);
+
+           inventorySlot[inventoryspot] = null;
+
+
+           if (inventoryspot == 0) {
+               inv1.setText("");
+           } else if (inventoryspot == 1) {
+               inv2.setText("");
+           } else if (inventoryspot == 2) {
+               inv3.setText("");
+           } else if (inventoryspot == 3) {
+               inv4.setText("");
+           } else if (inventoryspot == 4) {
+               inv5.setText("");
+           } else if (inventoryspot == 5) {
+               inv6.setText("");
+           } else if (inventoryspot == 6) {
+               inv7.setText("");
+           } else if (inventoryspot == 7) {
+               inv8.setText("");
+           }
+
+       }
+
+    }
 
 
     public void playerSetup(){
@@ -299,6 +334,10 @@ public void itemUsed(int inventoryspot){
         inventorySlot[5] = null;
         inventorySlot[6] = null;
         inventorySlot[7] = null;
+
+
+
+
 
 
         townGate();
@@ -352,12 +391,57 @@ public void itemUsed(int inventoryspot){
     }
 public void  northEmpty(){
         position = "northempty";
-        mainTextArea.setText("The river has dried up,\nNothing to do here/");
+        mainTextArea.setText("The river has dried up,\nNothing to do here");
         choice1.setText("Go south");
-        choice2.setText("");
+        choice2.setText("Go north");
         choice3.setText("");
         choice4.setText("");
 }
+
+    public void witch(){
+        position = "witch";
+        mainTextArea.setText("Hello traveler, \nAre you interested in one of my potions? ");
+    choice1.setText("Go back");
+    choice2.setText("Yes");
+    choice3.setText("");
+    choice4.setText("");
+}
+
+    public void getItem(){
+       position = "getitem";
+        int invNumber = 0;
+        while (inventorySlot[invNumber] != null && invNumber < 7){
+            invNumber++;
+        }
+        if (inventorySlot[invNumber] == null) {
+            mainTextArea.setText("Woman: Use this special brew when you are low ong Hp,\nIt will restore a bit.");
+            inventorySlot[invNumber] = potion;
+            if (invNumber == 0) {
+                inv1.setText(inventorySlot[invNumber].getName());
+            } else if (invNumber == 1) {
+                inv2.setText(inventorySlot[invNumber].getName());
+            } else if (invNumber == 2) {
+                inv3.setText(inventorySlot[invNumber].getName());
+            } else if (invNumber == 3) {
+                inv4.setText(inventorySlot[invNumber].getName());
+            } else if (invNumber == 4) {
+                inv5.setText(inventorySlot[invNumber].getName());
+            } else if (invNumber == 5) {
+                inv6.setText(inventorySlot[invNumber].getName());
+            } else if (invNumber == 6) {
+                inv7.setText(inventorySlot[invNumber].getName());
+            } else if (invNumber == 7) {
+                inv8.setText(inventorySlot[invNumber].getName());
+            }
+        }
+        else if (inventorySlot[invNumber] != null){
+            mainTextArea.setText("Woman: You cant hold anymore of my potions.");
+        }
+        choice1.setText(">");
+        choice2.setText("Go south");
+        choice3.setText("");
+        choice4.setText("");
+    }
 
     public void north(){
         position = "north";
@@ -563,6 +647,18 @@ public void  northEmpty(){
                         case "c4": west();  break;
                     } break;
 
+                case "witch":
+                    switch (yourChoice){
+                        case "c1": northEmpty(); break;
+                        case "c2": getItem();
+                    } break;
+
+                case "getitem":
+                    switch (yourChoice){
+                        case "c1": getItem(); break;
+                        case "c2": northEmpty(); break;
+                    }break;
+
                 case "north":
                     switch (yourChoice){
                         case "c1": crossRoad(); break;
@@ -574,6 +670,7 @@ public void  northEmpty(){
                 case "northempty":
                     switch (yourChoice){
                         case "c1": crossRoad(); break;
+                        case "c2": witch(); break;
                     }break;
 
                 case "east":
@@ -643,7 +740,7 @@ public void  northEmpty(){
                 case "invbutton":
                     if (inventoryPanel.isVisible()) {
                         inventoryPanel.setVisible(false);
-                    } else {inventoryPanel.setVisible(true);
+                    } else {inventoryPanel.setVisible(true); }
 
                     if (inventorySlot[0] != null){inv1.setText(inventorySlot[0].getName());}
                     else{ inv1.setText("");}
@@ -661,7 +758,6 @@ public void  northEmpty(){
                     else{ inv7.setText("");}
                     if (inventorySlot[7] != null){ inv8.setText(inventorySlot[7].getName());}
                     else{ inv8.setText("");}
-                    }
                     break;
 
                 case "iv1":
