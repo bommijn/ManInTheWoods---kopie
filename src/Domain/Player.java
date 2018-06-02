@@ -12,13 +12,23 @@ package Domain;
 public class Player {
     
     
-    private String playerName;
+    private String playerName, position;
     private int playerHp;
-    private Item weapon;
-    public Player( int playerHp, Item weapon){
 
-    setPlayerHp(playerHp);
-    setWeapon(weapon);
+
+
+
+    private int coins;
+    private Item weapon;
+
+
+
+    public Player(int playerHp, Item weapon, int coins, String position){
+
+        this.position = position;
+        this.coins = coins;
+        setPlayerHp(playerHp);
+        setWeapon(weapon);
     }
 
     public Item getWeapon() {
@@ -41,7 +51,23 @@ public class Player {
         return playerHp;
     }
 
-    public void setWeapon(Item weapon) {
+    public int getCoins() {
+        return coins;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+   public void setWeapon(Item weapon) {
         this.weapon = weapon;
     }
     

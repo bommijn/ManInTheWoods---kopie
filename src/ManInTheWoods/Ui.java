@@ -15,7 +15,7 @@ public class Ui {
     JFrame window;
     Container container;
     JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel, picturePanel;
-    JLabel titelNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
+    JLabel titelNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, coinsLabel, coinsnNumber;
     JButton startButton, choice1, choice2, choice3, choice4, inventoryButton, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8;
     JTextArea mainTextArea;
     Font titelFont = new Font("Times New Roman", Font.PLAIN, 62);
@@ -25,6 +25,7 @@ public class Ui {
     boolean canDrink = true;
     String weapon, position;
 
+
     private final Inventory inventory = new Inventory();
     private final Item potion = new Item("Potion", 5, 0);
     private final Vendor horvath = new Vendor("Horvath");
@@ -33,8 +34,9 @@ public class Ui {
     private final Monster goblin = new Monster("Goblin", 10, 4);
     private final Item battleAxe = new Item("Battle-axe",0,10);
     private final Item loafOfBread = new Item("Loaf of bread", 3,0);
-    
-    Player player = new Player(playerHP, knife);
+
+    CoinGenerator cg = new CoinGenerator();
+    Player player = new Player(playerHP, knife, 0,position);
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     ChoiceHandler choiceHandler = new ChoiceHandler();
     InventoryHandler invHandler = new InventoryHandler();
@@ -247,7 +249,7 @@ public class Ui {
         playerPanel = new JPanel();
         playerPanel.setBounds(830, 470, 300, 75);
         playerPanel.setBackground(Color.darkGray);
-        playerPanel.setLayout(new GridLayout(2, 2));
+        playerPanel.setLayout(new GridLayout(3, 3));
         container.add(playerPanel);
 
         hpLabel = new JLabel("Hp:");
@@ -257,7 +259,17 @@ public class Ui {
         hpLabelNumber = new JLabel();
         hpLabelNumber.setFont(gameFont);
         hpLabelNumber.setForeground(Color.WHITE);
+        coinsLabel = new JLabel("Coins:");
+        coinsLabel.setFont(gameFont);
+        coinsLabel.setForeground(Color.WHITE);
+        coinsnNumber = new JLabel();
+        coinsnNumber.setFont(gameFont);
+        coinsnNumber.setText("" + player.getCoins());
+        coinsnNumber.setForeground(Color.WHITE);
+
         playerPanel.add(hpLabelNumber);
+
+
 
         weaponLabel = new JLabel("Weapon:");
         weaponLabel.setFont(gameFont);
@@ -268,6 +280,8 @@ public class Ui {
         weaponLabelName.setFont(gameFont);
         weaponLabelName.setForeground(Color.WHITE);
         playerPanel.add(weaponLabelName);
+        playerPanel.add(coinsLabel);
+        playerPanel.add(coinsnNumber);
 
         playerSetup();
 
@@ -369,7 +383,7 @@ public class Ui {
     public void playerSetup() {
 
         playerHP = 15;
-
+        player.setPosition("townGate");
         player.setWeapon(knife);
 
         weapon = knife.getName();
@@ -475,8 +489,10 @@ public class Ui {
 //        if (inventory.getItems().get(invNumber) == null) 
         {
             mainTextArea.setText("Woman: Use this special brew when you are low on Hp,\nIt will restore a bit.");
-
-            inventory.getItems().add(potion);
+if(inventory.getItems().size() < 8){
+            inventory.getItems().add(potion);}
+            else
+                mainTextArea.setText("You cant carry anymore potion");
 //            if (invNumber == 0) {
 //                inv1.setText(inventorySlot[invNumber].getName());
 //            } else if (invNumber == 1) {
@@ -597,11 +613,17 @@ public class Ui {
     }
 
     public void win() {
+        int lastcount, coinsgotten;
+
         position = "win";
 
-        mainTextArea.setText(String.format("The %s has been defeated! \nThe monster dropped a ring.\n\n(You obtained a silver ring.) ", goblin.getName()));
-
+        lastcount = player.getCoins();
+        player.setCoins( player.getCoins() + cg.GenerateCoin("goblin"));
+        coinsgotten = player.getCoins() - lastcount ;
         silverRing = 1;
+        mainTextArea.setText(String.format("The %s has been defeated! \nThe monster dropped a ring.\nCoins received :"+ coinsgotten + "\n(You obtained a silver ring.) ", goblin.getName()));
+        coinsnNumber.setText("" + player.getCoins());
+
         choice1.setText("Go east");
         choice2.setText("");
         choice3.setText("");

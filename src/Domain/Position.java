@@ -12,8 +12,6 @@ package Domain;
 public class Position {
 
 
-
-
 }
 
 

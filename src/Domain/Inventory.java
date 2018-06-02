@@ -2,12 +2,13 @@ package Domain;
 
 import java.util.ArrayList;
 
-public  class Inventory {
+public  class Inventory  {
     
    ArrayList<Item> items;
 
+
     public Inventory(){
-        this.items = new ArrayList<>();
+        this.items = new ArrayList<>(8);
        
    
     }
