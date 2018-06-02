@@ -32,6 +32,7 @@ public class Ui {
     private final Item longsword = new Item("Longsword", 0, 7);
     private final Monster goblin = new Monster("Goblin", 10, 4);
     private final Item battleAxe = new Item("Battle-axe",0,10);
+    private final Item loafOfBread = new Item("Loaf of bread", 3,0);
     
     Player player = new Player(playerHP, knife);
     TitleScreenHandler tsHandler = new TitleScreenHandler();
@@ -636,9 +637,13 @@ public class Ui {
     public void vendorHorvath() {
         position = "horvath";
         mainTextArea.setText("Goodday adventurer, please have a look at my wares");
+        
         horvath.getVendorItems().add(battleAxe);
+        horvath.getVendorItems().add(loafOfBread);
+        
         choice1.setText(horvath.getVendorItems().get(0).getName());
-
+        choice2.setText(horvath.getVendorItems().get(1).getName());
+        choice2.setVisible(true);
     }
 
     public void town2() {
@@ -762,7 +767,9 @@ public class Ui {
                             initInventory();
                             break;
                         case "c2":
-
+                             inventory.getItems().add(loafOfBread);
+                            initInventory();
+                            break;
                     }
                     break;
                     
