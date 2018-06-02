@@ -26,11 +26,13 @@ public class Ui {
     String weapon, position;
 
     private final Inventory inventory = new Inventory();
-    Item potion = new Item("Potion", 5, 0);
-
-    private final Item knife = new Item("knife", 0, 3);
-    private final Item longsword = new Item("longsword", 0, 7);
+    private final Item potion = new Item("Potion", 5, 0);
+    private final Vendor horvath = new Vendor("Horvath");
+    private final Item knife = new Item("Knife", 0, 3);
+    private final Item longsword = new Item("Longsword", 0, 7);
     private final Monster goblin = new Monster("Goblin", 10, 4);
+    private final Item battleAxe = new Item("Battle-axe",0,10);
+    
     Player player = new Player(playerHP, knife);
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     ChoiceHandler choiceHandler = new ChoiceHandler();
@@ -237,8 +239,8 @@ public class Ui {
 
         //Creation picture panel
         picturePanel = new JPanel();
-        picturePanel.setBounds(50, 50, 400, 250);
-        picturePanel.setBackground(Color.black);
+        picturePanel.setBounds(30, 50, 650, 400);
+        picturePanel.setBackground(Color.white);
         container.add(picturePanel);
 
         playerPanel = new JPanel();
@@ -314,13 +316,13 @@ public class Ui {
             }
 
         } else if (inventory.getItems().get(inventoryspot).getDmgValue() > 0) {
-            
+
             inventory.getItems().add(player.getWeapon());
             player.setWeapon(inventory.getItems().get(inventoryspot));
             weapon = inventory.getItems().get(inventoryspot).getName();
             weaponLabelName.setText(player.getWeapon().getName());
             inventory.getItems().remove(inventoryspot);
-            
+
             switch (inventoryspot) {
                 case 0:
                     inv1.setText("");
@@ -400,9 +402,9 @@ public class Ui {
         mainTextArea.setText("You are at the gates of the town. \nA guard is standing in front of you. \n\nWhat do you do? ");
         position = "townGate";
 
-        ImageIcon townsgate = new ImageIcon(getClass().getClassLoader().getResource("Images/townsgate.png"));
+        ImageIcon townsgateImg = new ImageIcon(getClass().getClassLoader().getResource("Images/townsgate.png"));
 
-        picturePanel.add(new JLabel(townsgate));
+        picturePanel.add(new JLabel(townsgateImg));
 //ImageIcon townsgate = new ImageIcon("Images/townsgate.png");
 //picturePanel.set
         choice1.setText("Talk to the guard");
@@ -532,6 +534,10 @@ public class Ui {
         position = "east";
 
         mainTextArea.setText("You walk into a forest and found a Long Sword \n\n(You obtained a Long Sword!)");
+        picturePanel.removeAll();
+        ImageIcon longswordImg = new ImageIcon(getClass().getClassLoader().getResource("Images/Longsword.jpg"));
+
+        picturePanel.add(new JLabel(longswordImg));
 //        player.setWeapon(longsword);
 ////        weapon = "Long Sword";
 //        weaponLabelName.setText(player.getWeapon().getName());
@@ -627,11 +633,20 @@ public class Ui {
         window.dispose();
     }
 
-    public void ending() {
-        position = "ending";
+    public void vendorHorvath() {
+        position = "horvath";
+        mainTextArea.setText("Goodday adventurer, please have a look at my wares");
+        horvath.getVendorItems().add(battleAxe);
+        choice1.setText(horvath.getVendorItems().get(0).getName());
 
-        mainTextArea.setText("Guard: Oh you have killed the Goblin!? \nYou are a true hero, Welcome to our town.\n\nThe End");
-        choice1.setText("Quit Game");
+    }
+
+    public void town2() {
+        position = "town2";
+
+        mainTextArea.setText("Guard: Oh you have killed the Goblin!? \nYou are a true hero, Welcome to our town.\n\n Feel free to see one of our vendors");
+
+        choice1.setText("Horvath");
         choice1.setVisible(true);
         choice1.setBorderPainted(false);
         choice2.setVisible(false);
@@ -666,7 +681,7 @@ public class Ui {
                     switch (yourChoice) {
                         case "c1":
                             if (silverRing == 1) {
-                                ending();
+                                town2();
                                 break;
                             } else {
                                 talkGuard();
@@ -730,6 +745,28 @@ public class Ui {
                     }
                     break;
 
+                    case "town2":
+                    switch (yourChoice) {
+                        case "c1":
+                            vendorHorvath();
+                            break;
+                        case "c2":
+
+                    }
+                    break;
+                    
+                     case "horvath":
+                    switch (yourChoice) {
+                        case "c1":
+                            inventory.getItems().add(battleAxe);
+                            initInventory();
+                            break;
+                        case "c2":
+
+                    }
+                    break;
+                    
+                    
                 case "witch":
                     switch (yourChoice) {
                         case "c1":
