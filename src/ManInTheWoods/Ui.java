@@ -14,9 +14,10 @@ public class Ui {
 
     JFrame window;
     Container container;
-    JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel, picturePanel;
+    JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel, picturePanel, vendorPanel;
     JLabel titelNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, coinsLabel, coinsnNumber;
     JButton startButton, choice1, choice2, choice3, choice4, inventoryButton, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8;
+    JButton vendor1, vendor2, vendor3, vendor4, vendor5, vendor6, vendor7, vendor8, vendor9, vendor10, vendor11, vendor12, vendor13, vendor14, vendor15, vendor16, vendor17, vendor18, vendor19, vendor20, vendor21, vendor22, vendor23, vendor24;
     JTextArea mainTextArea;
     Font titelFont = new Font("Times New Roman", Font.PLAIN, 62);
     Font gameFont = new Font("Times New Roman", Font.PLAIN, 27);
@@ -39,6 +40,7 @@ public class Ui {
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     ChoiceHandler choiceHandler = new ChoiceHandler();
     InventoryHandler invHandler = new InventoryHandler();
+    VendorHandler vendorHandler = new VendorHandler();
 
     public Ui() {
 
@@ -238,6 +240,232 @@ public class Ui {
         inv8.addActionListener(invHandler);
         inv8.setActionCommand("iv8");
         inventoryPanel.add(inv8);
+
+        vendorPanel = new JPanel();
+        vendorPanel.setBounds(30, 50, 650, 400);
+        vendorPanel.setBackground(Color.white);
+        container.add(vendorPanel);
+
+
+
+        //vendor buttons
+        vendor1 = new JButton();
+        vendor1.setText("works woot");
+        vendor1.setForeground(Color.WHITE);
+        vendor1.setBackground(Color.black);
+        vendor1.setVisible(true);
+        vendor1.setFont(gameFont);
+        vendor1.addActionListener(vendorHandler);
+        vendor1.setActionCommand("vd1");
+        vendorPanel.add(vendor1);
+
+        vendor2 = new JButton();
+        vendor2.setForeground(Color.WHITE);
+        vendor2.setBackground(Color.black);
+        vendor2.setVisible(true);
+        vendor2.setFont(gameFont);
+        vendor2.addActionListener(vendorHandler);
+        vendor2.setActionCommand("vd2");
+        vendorPanel.add(vendor2);
+
+        vendor3 = new JButton();
+        vendor3.setForeground(Color.WHITE);
+        vendor3.setBackground(Color.black);
+        vendor3.setVisible(true);
+        vendor3.setFont(gameFont);
+        vendor3.addActionListener(vendorHandler);
+        vendor3.setActionCommand("vd3");
+        vendorPanel.add(vendor3);
+
+        vendor4 = new JButton();
+        vendor4.setForeground(Color.WHITE);
+        vendor4.setBackground(Color.black);
+        vendor4.setVisible(true);
+        vendor4.setFont(gameFont);
+        vendor4.addActionListener(vendorHandler);
+        vendor4.setActionCommand("vd4");
+        vendorPanel.add(vendor4);
+
+        vendor5 = new JButton();
+        vendor5.setForeground(Color.WHITE);
+        vendor5.setBackground(Color.black);
+        vendor5.setVisible(true);
+        vendor5.setFont(gameFont);
+        vendor5.addActionListener(vendorHandler);
+        vendor5.setActionCommand("vd5");
+        vendorPanel.add(vendor5);
+
+        vendor6 = new JButton();
+        vendor6.setForeground(Color.WHITE);
+        vendor6.setBackground(Color.black);
+        vendor6.setVisible(true);
+        vendor6.setFont(gameFont);
+        vendor6.addActionListener(vendorHandler);
+        vendor6.setActionCommand("vd6");
+        vendorPanel.add(vendor6);
+
+        vendor7 = new JButton();
+        vendor7.setForeground(Color.WHITE);
+        vendor7.setBackground(Color.black);
+        vendor7.setVisible(true);
+        vendor7.setFont(gameFont);
+        vendor7.addActionListener(vendorHandler);
+        vendor7.setActionCommand("vd7");
+        vendorPanel.add(vendor7);
+
+        vendor8 = new JButton();
+        vendor8.setForeground(Color.WHITE);
+        vendor8.setBackground(Color.black);
+        vendor8.setVisible(true);
+        vendor8.setFont(gameFont);
+        vendor8.addActionListener(vendorHandler);
+        vendor8.setActionCommand("vd8");
+        vendorPanel.add(vendor8);
+
+        vendor9 = new JButton();
+        vendor9.setForeground(Color.WHITE);
+        vendor9.setBackground(Color.black);
+        vendor9.setVisible(true);
+        vendor9.setFont(gameFont);
+        vendor9.addActionListener(vendorHandler);
+        vendor9.setActionCommand("vd9");
+        vendorPanel.add(vendor9);
+
+        vendor10 = new JButton();
+        vendor10.setForeground(Color.WHITE);
+        vendor10.setBackground(Color.black);
+        vendor10.setVisible(true);
+        vendor10.setFont(gameFont);
+        vendor10.addActionListener(vendorHandler);
+        vendor10.setActionCommand("vd10");
+        vendorPanel.add(vendor10);
+
+        vendor11 = new JButton();
+        vendor11.setForeground(Color.WHITE);
+        vendor11.setBackground(Color.black);
+        vendor11.setVisible(true);
+        vendor11.setFont(gameFont);
+        vendor11.addActionListener(vendorHandler);
+        vendor11.setActionCommand("vd11");
+        vendorPanel.add(vendor11);
+
+        vendor12 = new JButton();
+        vendor12.setForeground(Color.WHITE);
+        vendor12.setBackground(Color.black);
+        vendor12.setVisible(true);
+        vendor12.setFont(gameFont);
+        vendor12.addActionListener(vendorHandler);
+        vendor12.setActionCommand("vd13");
+        vendorPanel.add(vendor12);
+
+        vendor13 = new JButton();
+        vendor13.setForeground(Color.WHITE);
+        vendor13.setBackground(Color.black);
+        vendor13.setVisible(true);
+        vendor13.setFont(gameFont);
+        vendor13.addActionListener(vendorHandler);
+        vendor13.setActionCommand("vd13");
+        vendorPanel.add(vendor13);
+
+        vendor14 = new JButton();
+        vendor14.setForeground(Color.WHITE);
+        vendor14.setBackground(Color.black);
+        vendor14.setVisible(true);
+        vendor14.setFont(gameFont);
+        vendor14.addActionListener(vendorHandler);
+        vendor14.setActionCommand("vd14");
+        vendorPanel.add(vendor14);
+
+        vendor15 = new JButton();
+        vendor15.setForeground(Color.WHITE);
+        vendor15.setBackground(Color.black);
+        vendor15.setVisible(true);
+        vendor15.setFont(gameFont);
+        vendor15.addActionListener(vendorHandler);
+        vendor15.setActionCommand("vd15");
+        vendorPanel.add(vendor15);
+
+        vendor16 = new JButton();
+        vendor16.setForeground(Color.WHITE);
+        vendor16.setBackground(Color.black);
+        vendor16.setVisible(true);
+        vendor16.setFont(gameFont);
+        vendor16.addActionListener(vendorHandler);
+        vendor16.setActionCommand("vd16");
+        vendorPanel.add(vendor16);
+
+        vendor17 = new JButton();
+        vendor17.setForeground(Color.WHITE);
+        vendor17.setBackground(Color.black);
+        vendor17.setVisible(true);
+        vendor17.setFont(gameFont);
+        vendor17.addActionListener(vendorHandler);
+        vendor17.setActionCommand("vd17");
+        vendorPanel.add(vendor17);
+
+        vendor18 = new JButton();
+        vendor18.setForeground(Color.WHITE);
+        vendor18.setBackground(Color.black);
+        vendor18.setVisible(true);
+        vendor18.setFont(gameFont);
+        vendor18.addActionListener(vendorHandler);
+        vendor18.setActionCommand("vd18");
+        vendorPanel.add(vendor18);
+
+        vendor19 = new JButton();
+        vendor19.setForeground(Color.WHITE);
+        vendor19.setBackground(Color.black);
+        vendor19.setVisible(true);
+        vendor19.setFont(gameFont);
+        vendor19.addActionListener(vendorHandler);
+        vendor19.setActionCommand("vd19");
+        vendorPanel.add(vendor19);
+
+        vendor20 = new JButton();
+        vendor20.setForeground(Color.WHITE);
+        vendor20.setBackground(Color.black);
+        vendor20.setVisible(true);
+        vendor20.setFont(gameFont);
+        vendor20.addActionListener(vendorHandler);
+        vendor20.setActionCommand("vd20");
+        vendorPanel.add(vendor20);
+
+        vendor21 = new JButton();
+        vendor21.setForeground(Color.WHITE);
+        vendor21.setBackground(Color.black);
+        vendor21.setVisible(true);
+        vendor21.setFont(gameFont);
+        vendor21.addActionListener(vendorHandler);
+        vendor21.setActionCommand("vd21");
+        vendorPanel.add(vendor21);
+
+        vendor22 = new JButton();
+        vendor22.setForeground(Color.WHITE);
+        vendor22.setBackground(Color.black);
+        vendor22.setVisible(true);
+        vendor22.setFont(gameFont);
+        vendor22.addActionListener(vendorHandler);
+        vendor22.setActionCommand("vd22");
+        vendorPanel.add(vendor22);
+
+        vendor23 = new JButton();
+        vendor23.setForeground(Color.WHITE);
+        vendor23.setBackground(Color.black);
+        vendor23.setVisible(true);
+        vendor23.setFont(gameFont);
+        vendor23.addActionListener(vendorHandler);
+        vendor23.setActionCommand("vd23");
+        vendorPanel.add(vendor23);
+
+        vendor24 = new JButton();
+        vendor24.setForeground(Color.WHITE);
+        vendor24.setBackground(Color.black);
+        vendor24.setVisible(true);
+        vendor24.setFont(gameFont);
+        vendor24.addActionListener(vendorHandler);
+        vendor24.setActionCommand("vd24");
+        vendorPanel.add(vendor24);
+
 
         //Creation picture panel
         picturePanel = new JPanel();
@@ -1043,6 +1271,13 @@ public class Ui {
                     break;
 
             }
+        }
+    }
+    public class VendorHandler implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+
         }
     }
 
