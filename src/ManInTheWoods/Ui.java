@@ -252,7 +252,7 @@ public class Ui {
 
         //vendor buttons
         vendor1 = new JButton();
-        vendor1.setText("works woot");
+      
         vendor1.setForeground(Color.WHITE);
         vendor1.setBackground(Color.black);
         vendor1.setVisible(true);
@@ -262,6 +262,7 @@ public class Ui {
         vendorPanel.add(vendor1);
 
         vendor2 = new JButton();
+     
         vendor2.setForeground(Color.WHITE);
         vendor2.setBackground(Color.black);
         vendor2.setVisible(true);
@@ -906,6 +907,10 @@ public class Ui {
 
         choice1.setText(horvath.getVendorItems().get(0).getName() + " " + horvath.getVendorItems().get(0).getPrice() + "coins");
         choice2.setText(horvath.getVendorItems().get(1).getName() + " " + horvath.getVendorItems().get(1).getPrice() + "coins");
+        
+        vendor1.setText(horvath.getVendorItems().get(0).getName() + " " + horvath.getVendorItems().get(0).getPrice() + "coins");
+        vendor2.setText(horvath.getVendorItems().get(1).getName() + " " + horvath.getVendorItems().get(1).getPrice() + "coins");
+        
         choice1.setVisible(true);
         choice1.setBorderPainted(true);
         choice2.setVisible(true);
@@ -1043,23 +1048,23 @@ public class Ui {
                 case "horvath":
                     switch (yourChoice) {
                         case "c1":
-                            if (player.getCoins() < battleAxe.getPrice()) {
+                            if (player.getCoins() < horvath.getVendorItems().get(0).getPrice()) {
                                 mainTextArea.setText("Not enough coins to make that purchase, maybe I have something else within your budget");
                                 break;
                             } else {
-                                inventory.getItems().add(battleAxe);
-                                player.setCoins(player.getCoins() - battleAxe.getPrice());
+                                inventory.getItems().add(horvath.getVendorItems().get(0));
+                                player.setCoins(player.getCoins() - horvath.getVendorItems().get(0).getPrice());
                                 coinsnNumber.setText("" + player.getCoins());
                                 initInventory();
                                 break;
                             }
                         case "c2":
-                            if (player.getCoins() < loafOfBread.getPrice()) {
+                            if (player.getCoins() <horvath.getVendorItems().get(1).getPrice()) {
                                 mainTextArea.setText("Not enough coins to make that purchase, maybe I have something else within your budget");
                                 break;
                             } else {
-                                inventory.getItems().add(loafOfBread);
-                                player.setCoins(player.getCoins() - loafOfBread.getPrice());
+                                inventory.getItems().add(horvath.getVendorItems().get(1));
+                                player.setCoins(player.getCoins() - horvath.getVendorItems().get(1).getPrice());
                                 coinsnNumber.setText("" + player.getCoins());
                                 initInventory();
                                 break;
@@ -1280,8 +1285,69 @@ public class Ui {
 
         @Override
         public void actionPerformed(ActionEvent event) {
+String buttonPressed = event.getActionCommand();
+            
 
+            switch (buttonPressed) {
+
+//                    if (inventory.getItems().get(0) != null){inv1.setText(inventory.getItems().get(0).getName());}
+//                    else{ inv1.setText("");}
+//                    if (inventory.getItems().get(1) != null){inv2.setText(inventory.getItems().get(1).getName());}
+//                    else{ inv2.setText("");}
+//                    if (inventory.getItems().get(2) != null){inv3.setText(inventory.getItems().get(2).getName());}
+//                    else{ inv3.setText("");}
+//                    if (inventory.getItems().get(3) != null){inv4.setText(inventory.getItems().get(3).getName());}
+//                    else{ inv4.setText("");}
+//                    if (inventory.getItems().get(4) != null){inv5.setText(inventory.getItems().get(4).getName());}
+//                    else{ inv5.setText("");}
+//                    if (inventory.getItems().get(5)!= null){inv6.setText(inventory.getItems().get(5).getName());}
+//                    else{ inv6.setText("");}
+//                    if (inventory.getItems().get(6) != null){ inv7.setText(inventory.getItems().get(6).getName());}
+//                    else{ inv7.setText("");}
+//                    if (inventory.getItems().get(7)!= null){ inv8.setText(inventory.getItems().get(7).getName());}
+//                    else{ inv8.setText("");}
+//                    break;
+                   case "vd1":
+                            if (player.getCoins() < horvath.getVendorItems().get(0).getPrice()) {
+                                mainTextArea.setText("Not enough coins to make that purchase, maybe I have something else within your budget");
+                                break;
+                            } else {
+                                inventory.getItems().add(horvath.getVendorItems().get(0));
+                                player.setCoins(player.getCoins() - horvath.getVendorItems().get(0).getPrice());
+                                coinsnNumber.setText("" + player.getCoins());
+                                initInventory();
+                                break;
+                            }
+                 case "vd2":
+                            if (player.getCoins() <horvath.getVendorItems().get(1).getPrice()) {
+                                mainTextArea.setText("Not enough coins to make that purchase, maybe I have something else within your budget");
+                                break;
+                            } else {
+                                inventory.getItems().add(horvath.getVendorItems().get(1));
+                                player.setCoins(player.getCoins() - horvath.getVendorItems().get(1).getPrice());
+                                coinsnNumber.setText("" + player.getCoins());
+                                initInventory();
+                                break;
+                            }
+                case "iv3":
+                    itemUsed(2);
+                    break;
+                case "iv4":
+                    itemUsed(3);
+                    break;
+                case "iv5":
+                    itemUsed(4);
+                    break;
+                case "iv6":
+                    itemUsed(5);
+                    break;
+                case "iv7":
+                    itemUsed(6);
+                    break;
+                case "iv8":
+                    itemUsed(7);
+                    break;
         }
-    }
+    }}}
 
-}
+
