@@ -25,18 +25,17 @@ public class Ui {
     boolean canDrink = true;
     String weapon, position;
 
-
     private final Inventory inventory = new Inventory();
-    private final Item potion = new Item("Potion", 5, 0);
+    private final Item potion = new Item("Potion", 5, 0, 5);
     private final Vendor horvath = new Vendor("Horvath");
-    private final Item knife = new Item("Knife", 0, 3);
-    private final Item longsword = new Item("Longsword", 0, 7);
+    private final Item knife = new Item("Knife", 0, 3, 2);
+    private final Item longsword = new Item("Longsword", 0, 7, 5);
     private final Monster goblin = new Monster("Goblin", 10, 4);
-    private final Item battleAxe = new Item("Battle-axe",0,10);
-    private final Item loafOfBread = new Item("Loaf of bread", 3,0);
+    private final Item battleAxe = new Item("Battle-axe", 0, 10, 20);
+    private final Item loafOfBread = new Item("Loaf of bread", 3, 0, 4);
 
     CoinGenerator cg = new CoinGenerator();
-    Player player = new Player(playerHP, knife, 0,position);
+    Player player = new Player(playerHP, knife, 0, position);
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     ChoiceHandler choiceHandler = new ChoiceHandler();
     InventoryHandler invHandler = new InventoryHandler();
@@ -269,8 +268,6 @@ public class Ui {
 
         playerPanel.add(hpLabelNumber);
 
-
-
         weaponLabel = new JLabel("Weapon:");
         weaponLabel.setFont(gameFont);
         weaponLabel.setForeground(Color.WHITE);
@@ -489,10 +486,11 @@ public class Ui {
 //        if (inventory.getItems().get(invNumber) == null) 
         {
             mainTextArea.setText("Woman: Use this special brew when you are low on Hp,\nIt will restore a bit.");
-if(inventory.getItems().size() < 8){
-            inventory.getItems().add(potion);}
-            else
+            if (inventory.getItems().size() < 8) {
+                inventory.getItems().add(potion);
+            } else {
                 mainTextArea.setText("You cant carry anymore potion");
+            }
 //            if (invNumber == 0) {
 //                inv1.setText(inventorySlot[invNumber].getName());
 //            } else if (invNumber == 1) {
@@ -618,10 +616,10 @@ if(inventory.getItems().size() < 8){
         position = "win";
 
         lastcount = player.getCoins();
-        player.setCoins( player.getCoins() + cg.GenerateCoin("goblin"));
-        coinsgotten = player.getCoins() - lastcount ;
+        player.setCoins(player.getCoins() + cg.GenerateCoin("goblin"));
+        coinsgotten = player.getCoins() - lastcount;
         silverRing = 1;
-        mainTextArea.setText(String.format("The %s has been defeated! \nThe monster dropped a ring.\nCoins received :"+ coinsgotten + "\n(You obtained a silver ring.) ", goblin.getName()));
+        mainTextArea.setText(String.format("The %s has been defeated! \nThe monster dropped a ring.\nCoins received :" + coinsgotten + "\n(You obtained a silver ring.) ", goblin.getName()));
         coinsnNumber.setText("" + player.getCoins());
 
         choice1.setText("Go east");
@@ -659,13 +657,16 @@ if(inventory.getItems().size() < 8){
     public void vendorHorvath() {
         position = "horvath";
         mainTextArea.setText("Goodday adventurer, please have a look at my wares");
-        
+
         horvath.getVendorItems().add(battleAxe);
         horvath.getVendorItems().add(loafOfBread);
-        
-        choice1.setText(horvath.getVendorItems().get(0).getName());
-        choice2.setText(horvath.getVendorItems().get(1).getName());
+
+        choice1.setText(horvath.getVendorItems().get(0).getName() + " " + horvath.getVendorItems().get(0).getPrice() + "coins");
+        choice2.setText(horvath.getVendorItems().get(1).getName() + " " + horvath.getVendorItems().get(1).getPrice() + "coins");
+        choice1.setVisible(true);
+        choice1.setBorderPainted(false);
         choice2.setVisible(true);
+        choice2.setBorderPainted(false);
     }
 
     public void town2() {
@@ -772,7 +773,7 @@ if(inventory.getItems().size() < 8){
                     }
                     break;
 
-                    case "town2":
+                case "town2":
                     switch (yourChoice) {
                         case "c1":
                             vendorHorvath();
@@ -781,21 +782,33 @@ if(inventory.getItems().size() < 8){
 
                     }
                     break;
-                    
-                     case "horvath":
+
+                case "horvath":
                     switch (yourChoice) {
                         case "c1":
-                            inventory.getItems().add(battleAxe);
-                            initInventory();
-                            break;
+                            if (player.getCoins() < battleAxe.getPrice()) {
+                                mainTextArea.setText("Not enough coins to make that purchase, maybe I have something else within your budget");
+                                break;
+                            } else {
+                                inventory.getItems().add(battleAxe);
+                                player.setCoins(player.getCoins() - battleAxe.getPrice());
+                                coinsnNumber.setText("" + player.getCoins());
+                                initInventory();
+                                break;
+                            }
                         case "c2":
-                             inventory.getItems().add(loafOfBread);
+                            if (player.getCoins() < loafOfBread.getPrice()) {
+                                mainTextArea.setText("Not enough coins to make that purchase, maybe I have something else within your budget");
+                                break;
+                            } else {
+                            inventory.getItems().add(loafOfBread);
+                            player.setCoins(player.getCoins() - loafOfBread.getPrice());
+                            coinsnNumber.setText("" + player.getCoins());
                             initInventory();
-                            break;
+                            break;}
                     }
                     break;
-                    
-                    
+
                 case "witch":
                     switch (yourChoice) {
                         case "c1":
