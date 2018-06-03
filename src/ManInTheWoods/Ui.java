@@ -14,18 +14,22 @@ public class Ui {
 
     JFrame window;
     Container container;
-    JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel, picturePanel, vendorPanel;
+    JTextField nameField;
+    JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel, picturePanel, vendorPanel, namePanel;
     JLabel titelNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, coinsLabel, coinsnNumber;
-    JButton startButton, choice1, choice2, choice3, choice4, inventoryButton, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8;
-    JButton vendor1, vendor2, vendor3, vendor4, vendor5, vendor6, vendor7, vendor8, vendor9, vendor10, vendor11, vendor12, vendor13, vendor14, vendor15, vendor16, vendor17, vendor18, vendor19, vendor20, vendor21, vendor22, vendor23, vendor24;
+    JButton startButton, choice1, choice2, choice3, choice4, inventoryButton, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, nameButton;
+    public JButton vendor1, vendor2, vendor3, vendor4, vendor5, vendor6, vendor7, vendor8, vendor9, vendor10, vendor11, vendor12, vendor13, vendor14, vendor15, vendor16, vendor17, vendor18, vendor19, vendor20, vendor21, vendor22, vendor23, vendor24;
     JTextArea mainTextArea;
     Font titelFont = new Font("Times New Roman", Font.PLAIN, 62);
     Font gameFont = new Font("Times New Roman", Font.PLAIN, 27);
+    Font vendorFont = new Font("Times New Roman", Font.PLAIN, 20);
     int playerHP, silverRing;
     int monsterHP;
     boolean canDrink = true;
+    boolean guardKnowsName = true;
     String weapon, position;
 
+    private final Item worms = new Item("Worms", 5,0,2);
     private final Inventory inventory = new Inventory();
     private final Item potion = new Item("Potion", 5, 0, 5);
     private final Vendor horvath = new Vendor("Horvath");
@@ -109,6 +113,30 @@ public class Ui {
         choiceButtonPanel.setBackground(Color.BLACK);
         choiceButtonPanel.setLayout(new GridLayout(5, 1));
         container.add(choiceButtonPanel);
+
+        //namepanel for jtextfield
+        namePanel = new JPanel();
+        namePanel.setVisible(false);
+        namePanel.setBounds(830, 550, 300, 60);
+        namePanel.setBackground(Color.green);
+        namePanel.setLayout(new GridLayout(2,1));
+        container.add(namePanel);
+
+        //JText field
+        nameField = new JTextField();
+        nameField.setBackground(Color.BLACK);
+        nameField.setForeground(Color.WHITE);
+        namePanel.add(nameField);
+
+        //namebutton
+        nameButton = new JButton("Enter name");
+        nameButton.setFocusPainted(false);
+        nameButton.addActionListener(choiceHandler);
+        nameButton.setBackground(Color.BLACK);
+        nameButton.setActionCommand("name");
+        namePanel.add(nameButton);
+
+
 
         //creation choice button 1
         choice1 = new JButton();
@@ -256,7 +284,7 @@ public class Ui {
         vendor1.setForeground(Color.WHITE);
         vendor1.setBackground(Color.black);
         vendor1.setVisible(true);
-        vendor1.setFont(gameFont);
+        vendor1.setFont(vendorFont);
         vendor1.addActionListener(vendorHandler);
         vendor1.setActionCommand("vd1");
         vendorPanel.add(vendor1);
@@ -266,7 +294,7 @@ public class Ui {
         vendor2.setForeground(Color.WHITE);
         vendor2.setBackground(Color.black);
         vendor2.setVisible(true);
-        vendor2.setFont(gameFont);
+        vendor2.setFont(vendorFont);
         vendor2.addActionListener(vendorHandler);
         vendor2.setActionCommand("vd2");
         vendorPanel.add(vendor2);
@@ -275,7 +303,7 @@ public class Ui {
         vendor3.setForeground(Color.WHITE);
         vendor3.setBackground(Color.black);
         vendor3.setVisible(true);
-        vendor3.setFont(gameFont);
+        vendor3.setFont(vendorFont);
         vendor3.addActionListener(vendorHandler);
         vendor3.setActionCommand("vd3");
         vendorPanel.add(vendor3);
@@ -284,7 +312,7 @@ public class Ui {
         vendor4.setForeground(Color.WHITE);
         vendor4.setBackground(Color.black);
         vendor4.setVisible(true);
-        vendor4.setFont(gameFont);
+        vendor4.setFont(vendorFont);
         vendor4.addActionListener(vendorHandler);
         vendor4.setActionCommand("vd4");
         vendorPanel.add(vendor4);
@@ -293,7 +321,7 @@ public class Ui {
         vendor5.setForeground(Color.WHITE);
         vendor5.setBackground(Color.black);
         vendor5.setVisible(true);
-        vendor5.setFont(gameFont);
+        vendor5.setFont(vendorFont);
         vendor5.addActionListener(vendorHandler);
         vendor5.setActionCommand("vd5");
         vendorPanel.add(vendor5);
@@ -302,7 +330,7 @@ public class Ui {
         vendor6.setForeground(Color.WHITE);
         vendor6.setBackground(Color.black);
         vendor6.setVisible(true);
-        vendor6.setFont(gameFont);
+        vendor6.setFont(vendorFont);
         vendor6.addActionListener(vendorHandler);
         vendor6.setActionCommand("vd6");
         vendorPanel.add(vendor6);
@@ -311,7 +339,7 @@ public class Ui {
         vendor7.setForeground(Color.WHITE);
         vendor7.setBackground(Color.black);
         vendor7.setVisible(true);
-        vendor7.setFont(gameFont);
+        vendor7.setFont(vendorFont);
         vendor7.addActionListener(vendorHandler);
         vendor7.setActionCommand("vd7");
         vendorPanel.add(vendor7);
@@ -320,7 +348,7 @@ public class Ui {
         vendor8.setForeground(Color.WHITE);
         vendor8.setBackground(Color.black);
         vendor8.setVisible(true);
-        vendor8.setFont(gameFont);
+        vendor8.setFont(vendorFont);
         vendor8.addActionListener(vendorHandler);
         vendor8.setActionCommand("vd8");
         vendorPanel.add(vendor8);
@@ -329,7 +357,7 @@ public class Ui {
         vendor9.setForeground(Color.WHITE);
         vendor9.setBackground(Color.black);
         vendor9.setVisible(true);
-        vendor9.setFont(gameFont);
+        vendor9.setFont(vendorFont);
         vendor9.addActionListener(vendorHandler);
         vendor9.setActionCommand("vd9");
         vendorPanel.add(vendor9);
@@ -338,7 +366,7 @@ public class Ui {
         vendor10.setForeground(Color.WHITE);
         vendor10.setBackground(Color.black);
         vendor10.setVisible(true);
-        vendor10.setFont(gameFont);
+        vendor10.setFont(vendorFont);
         vendor10.addActionListener(vendorHandler);
         vendor10.setActionCommand("vd10");
         vendorPanel.add(vendor10);
@@ -347,7 +375,7 @@ public class Ui {
         vendor11.setForeground(Color.WHITE);
         vendor11.setBackground(Color.black);
         vendor11.setVisible(true);
-        vendor11.setFont(gameFont);
+        vendor11.setFont(vendorFont);
         vendor11.addActionListener(vendorHandler);
         vendor11.setActionCommand("vd11");
         vendorPanel.add(vendor11);
@@ -356,7 +384,7 @@ public class Ui {
         vendor12.setForeground(Color.WHITE);
         vendor12.setBackground(Color.black);
         vendor12.setVisible(true);
-        vendor12.setFont(gameFont);
+        vendor12.setFont(vendorFont);
         vendor12.addActionListener(vendorHandler);
         vendor12.setActionCommand("vd13");
         vendorPanel.add(vendor12);
@@ -365,7 +393,7 @@ public class Ui {
         vendor13.setForeground(Color.WHITE);
         vendor13.setBackground(Color.black);
         vendor13.setVisible(true);
-        vendor13.setFont(gameFont);
+        vendor13.setFont(vendorFont);
         vendor13.addActionListener(vendorHandler);
         vendor13.setActionCommand("vd13");
         vendorPanel.add(vendor13);
@@ -374,7 +402,7 @@ public class Ui {
         vendor14.setForeground(Color.WHITE);
         vendor14.setBackground(Color.black);
         vendor14.setVisible(true);
-        vendor14.setFont(gameFont);
+        vendor14.setFont(vendorFont);
         vendor14.addActionListener(vendorHandler);
         vendor14.setActionCommand("vd14");
         vendorPanel.add(vendor14);
@@ -383,7 +411,7 @@ public class Ui {
         vendor15.setForeground(Color.WHITE);
         vendor15.setBackground(Color.black);
         vendor15.setVisible(true);
-        vendor15.setFont(gameFont);
+        vendor15.setFont(vendorFont);
         vendor15.addActionListener(vendorHandler);
         vendor15.setActionCommand("vd15");
         vendorPanel.add(vendor15);
@@ -392,7 +420,7 @@ public class Ui {
         vendor16.setForeground(Color.WHITE);
         vendor16.setBackground(Color.black);
         vendor16.setVisible(true);
-        vendor16.setFont(gameFont);
+        vendor16.setFont(vendorFont);
         vendor16.addActionListener(vendorHandler);
         vendor16.setActionCommand("vd16");
         vendorPanel.add(vendor16);
@@ -401,7 +429,7 @@ public class Ui {
         vendor17.setForeground(Color.WHITE);
         vendor17.setBackground(Color.black);
         vendor17.setVisible(true);
-        vendor17.setFont(gameFont);
+        vendor17.setFont(vendorFont);
         vendor17.addActionListener(vendorHandler);
         vendor17.setActionCommand("vd17");
         vendorPanel.add(vendor17);
@@ -410,7 +438,7 @@ public class Ui {
         vendor18.setForeground(Color.WHITE);
         vendor18.setBackground(Color.black);
         vendor18.setVisible(true);
-        vendor18.setFont(gameFont);
+        vendor18.setFont(vendorFont);
         vendor18.addActionListener(vendorHandler);
         vendor18.setActionCommand("vd18");
         vendorPanel.add(vendor18);
@@ -419,7 +447,7 @@ public class Ui {
         vendor19.setForeground(Color.WHITE);
         vendor19.setBackground(Color.black);
         vendor19.setVisible(true);
-        vendor19.setFont(gameFont);
+        vendor19.setFont(vendorFont);
         vendor19.addActionListener(vendorHandler);
         vendor19.setActionCommand("vd19");
         vendorPanel.add(vendor19);
@@ -428,7 +456,7 @@ public class Ui {
         vendor20.setForeground(Color.WHITE);
         vendor20.setBackground(Color.black);
         vendor20.setVisible(true);
-        vendor20.setFont(gameFont);
+        vendor20.setFont(vendorFont);
         vendor20.addActionListener(vendorHandler);
         vendor20.setActionCommand("vd20");
         vendorPanel.add(vendor20);
@@ -437,7 +465,7 @@ public class Ui {
         vendor21.setForeground(Color.WHITE);
         vendor21.setBackground(Color.black);
         vendor21.setVisible(true);
-        vendor21.setFont(gameFont);
+        vendor21.setFont(vendorFont);
         vendor21.addActionListener(vendorHandler);
         vendor21.setActionCommand("vd21");
         vendorPanel.add(vendor21);
@@ -446,7 +474,7 @@ public class Ui {
         vendor22.setForeground(Color.WHITE);
         vendor22.setBackground(Color.black);
         vendor22.setVisible(true);
-        vendor22.setFont(gameFont);
+        vendor22.setFont(vendorFont);
         vendor22.addActionListener(vendorHandler);
         vendor22.setActionCommand("vd22");
         vendorPanel.add(vendor22);
@@ -455,7 +483,7 @@ public class Ui {
         vendor23.setForeground(Color.WHITE);
         vendor23.setBackground(Color.black);
         vendor23.setVisible(true);
-        vendor23.setFont(gameFont);
+        vendor23.setFont(vendorFont);
         vendor23.addActionListener(vendorHandler);
         vendor23.setActionCommand("vd23");
         vendorPanel.add(vendor23);
@@ -464,7 +492,7 @@ public class Ui {
         vendor24.setForeground(Color.WHITE);
         vendor24.setBackground(Color.black);
         vendor24.setVisible(true);
-        vendor24.setFont(gameFont);
+        vendor24.setFont(vendorFont);
         vendor24.addActionListener(vendorHandler);
         vendor24.setActionCommand("vd24");
         vendorPanel.add(vendor24);
@@ -515,13 +543,24 @@ public class Ui {
 
     }
 
+    public void initVendor(){
+
+vendor5.setText("test");
+        vendor1.setText(horvath.getVendorItems().get(0).getName());
+        vendor2.setText(horvath.getVendorItems().get(1).getName());
+       if (horvath.getVendorItems().get(2).getName() == null){
+           vendor3.setText("no item");
+       }
+        vendor3.setText(horvath.getVendorItems().get(2).getName());
+
+    }
+
+
     public void initInventory() {
 
         inv1.setText(inventory.getItems().get(0).getName());
-
         inv2.setText(inventory.getItems().get(1).getName());
         inv3.setText(inventory.getItems().get(2).getName());
-
         inv4.setText(inventory.getItems().get(3).getName());
         inv5.setText(inventory.getItems().get(4).getName());
         inv6.setText(inventory.getItems().get(5).getName());
@@ -611,7 +650,7 @@ public class Ui {
     public void playerSetup() {
 
         playerHP = 15;
-        player.setPosition("townGate");
+        player.setPosition("startup");
         player.setWeapon(knife);
 
         weapon = knife.getName();
@@ -621,8 +660,10 @@ public class Ui {
         choice1.setVisible(true);
         choice1.setBorderPainted(true);
         choice2.setVisible(true);
+        choice2.setBorderPainted(true);
         choice3.setVisible(true);
         choice4.setVisible(true);
+
 
         inventory.getItems().add(potion);
         inv1.setText(inventory.getItems().get(0).getName());
@@ -641,9 +682,18 @@ public class Ui {
         vendorPanel.setVisible(true);
     }
 
+
+
     public void townGate() {
+
+
+
         mainTextArea.setText("You are at the gates of the town. \nA guard is standing in front of you. \n\nWhat do you do? ");
         position = "townGate";
+        player.setCoins(5000);
+        silverRing =0;
+
+        coinsnNumber.setText("" + player.getCoins());
 
 //        ImageIcon townsgateImg = new ImageIcon(getClass().getClassLoader().getResource("Images/townsgate.png"));
 //        
@@ -656,9 +706,23 @@ public class Ui {
         choice4.setText("");
     }
 
-    public void talkGuard() {
+    public void talkGuardFirst(){
+        guardKnowsName = false;
+        position = "startup";
+
         mainTextArea.setText("Hello stranger, i have never seen you before. \n"
-                + "I'm sorry but we cant allow strangers in our town. ");
+                + "Tell me your name. ");
+
+        choiceButtonPanel.setVisible(false);
+        namePanel.setVisible(true);
+
+
+    }
+
+    public void talkGuard() {
+
+
+        mainTextArea.setText("Ah so your name is " + player.getPlayerName() + "\nI'm sorry but i cant let you into the town right now. ");
         position = "talkGuard";
 
         choice1.setText(">");
@@ -902,15 +966,18 @@ public class Ui {
         vendorUI();
         mainTextArea.setText("Goodday adventurer, please have a look at my wares");
 
+        horvath.getVendorItems().ensureCapacity(24);
         horvath.getVendorItems().add(battleAxe);
         horvath.getVendorItems().add(loafOfBread);
+        horvath.getVendorItems().add(worms);
 
         choice1.setText(horvath.getVendorItems().get(0).getName() + " " + horvath.getVendorItems().get(0).getPrice() + "coins");
         choice2.setText(horvath.getVendorItems().get(1).getName() + " " + horvath.getVendorItems().get(1).getPrice() + "coins");
         
         vendor1.setText(horvath.getVendorItems().get(0).getName() + " " + horvath.getVendorItems().get(0).getPrice() + "coins");
         vendor2.setText(horvath.getVendorItems().get(1).getName() + " " + horvath.getVendorItems().get(1).getPrice() + "coins");
-        
+        vendor3.setText(horvath.getVendorItems().get(2).getName() + " " + horvath.getVendorItems().get(2).getPrice() + "coins");
+
         choice1.setVisible(true);
         choice1.setBorderPainted(true);
         choice2.setVisible(true);
@@ -953,16 +1020,29 @@ public class Ui {
 
             switch (position) {
 
+                case "startup":
+                    switch (yourChoice){
+                        case "name":
+                            player.setPlayerName(nameField.getText());
+                            guardKnowsName = false;
+                            namePanel.setVisible(false);
+                            choiceButtonPanel.setVisible(true);
+                            talkGuard();
+
+                    }
+
+
                 case "townGate":
                     switch (yourChoice) {
                         case "c1":
                             if (silverRing == 1) {
                                 town2();
                                 break;
-                            } else {
-                                talkGuard();
+                            } else if (guardKnowsName){
+                                talkGuardFirst();
                                 break;
-                            }
+                            } else {talkGuard();
+                            break;}
                         case "c2":
                             attackGuard();
                             break;
@@ -1234,6 +1314,7 @@ public class Ui {
 
             }
 
+
             switch (buttonPressed) {
 
 //                    if (inventory.getItems().get(0) != null){inv1.setText(inventory.getItems().get(0).getName());}
@@ -1315,6 +1396,8 @@ String buttonPressed = event.getActionCommand();
                                 inventory.getItems().add(horvath.getVendorItems().get(0));
                                 player.setCoins(player.getCoins() - horvath.getVendorItems().get(0).getPrice());
                                 coinsnNumber.setText("" + player.getCoins());
+                                horvath.getVendorItems().remove(0);
+                                initVendor();
                                 initInventory();
                                 break;
                             }
@@ -1326,27 +1409,43 @@ String buttonPressed = event.getActionCommand();
                                 inventory.getItems().add(horvath.getVendorItems().get(1));
                                 player.setCoins(player.getCoins() - horvath.getVendorItems().get(1).getPrice());
                                 coinsnNumber.setText("" + player.getCoins());
+                                horvath.getVendorItems().remove(1);
+                                initVendor();
                                 initInventory();
                                 break;
                             }
-                case "iv3":
-                    itemUsed(2);
-                    break;
-                case "iv4":
-                    itemUsed(3);
-                    break;
-                case "iv5":
-                    itemUsed(4);
-                    break;
-                case "iv6":
-                    itemUsed(5);
-                    break;
-                case "iv7":
-                    itemUsed(6);
-                    break;
-                case "iv8":
-                    itemUsed(7);
-                    break;
+
+                 case "vd3":
+                    if (player.getCoins() <horvath.getVendorItems().get(1).getPrice()) {
+                        mainTextArea.setText("Not enough coins to make that purchase, maybe I have something else within your budget");
+                        break;
+                    } else {
+                        inventory.getItems().add(horvath.getVendorItems().get(2));
+                        player.setCoins(player.getCoins() - horvath.getVendorItems().get(2).getPrice());
+                        coinsnNumber.setText("" + player.getCoins());
+                        horvath.getVendorItems().remove(2);
+                        initVendor();
+                        initInventory();
+                        break;
+                    }
+//                case "iv3":
+//                    itemUsed(2);
+//                    break;
+//                case "iv4":
+//                    itemUsed(3);
+//                    break;
+//                case "iv5":
+//                    itemUsed(4);
+//                    break;
+//                case "iv6":
+//                    itemUsed(5);
+//                    break;
+//                case "iv7":
+//                    itemUsed(6);
+//                    break;
+//                case "iv8":
+//                    itemUsed(7);
+//                    break;
         }
     }}}
 
