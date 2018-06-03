@@ -244,6 +244,8 @@ public class Ui {
         vendorPanel = new JPanel();
         vendorPanel.setBounds(30, 50, 650, 400);
         vendorPanel.setBackground(Color.white);
+       vendorPanel.setLayout(new GridLayout(8,3));
+        vendorPanel.setVisible(false);
         container.add(vendorPanel);
 
 
@@ -633,9 +635,9 @@ public class Ui {
 
         townGate();
     }
-
-    public void resizeImage(ImageIcon townsgate) {
-
+    public void vendorUI(){
+        picturePanel.setVisible(false);
+        vendorPanel.setVisible(true);
     }
 
     public void townGate() {
@@ -896,6 +898,7 @@ public class Ui {
 
     public void vendorHorvath() {
         position = "horvath";
+        vendorUI();
         mainTextArea.setText("Goodday adventurer, please have a look at my wares");
 
         horvath.getVendorItems().add(battleAxe);
