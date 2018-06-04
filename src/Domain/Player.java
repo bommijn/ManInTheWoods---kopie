@@ -5,14 +5,17 @@
  */
 package Domain;
 
+
+import ManInTheWoods.Ui;
+
 /**
  *
  * @author Bram
  */
-public class Player {
+public  class  Player {
+
     
-    
-    private String playerName, position;
+    private  String playerName, position;
     private int playerHp;
 
 
@@ -23,7 +26,7 @@ public class Player {
 
 
 
-    public Player(int playerHp, Item weapon, int coins, String position){
+    public  Player(int playerHp, Item weapon, int coins, String position){
 
         this.position = position;
         this.coins = coins;
@@ -65,6 +68,15 @@ public class Player {
 
     public void setPosition(String position) {
         this.position = position;
+        Position pos = new Position();
+
+        switch (position){
+            case "crossroad": pos.crossRoad(); break;
+            case "towngate": pos.townGate(); break;
+
+
+        }
+
     }
 
    public void setWeapon(Item weapon) {

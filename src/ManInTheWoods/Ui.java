@@ -12,22 +12,32 @@ import java.util.Random;
 
 public class Ui {
 
-    JFrame window;
-    Container container;
-    JTextField nameField;
-    JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel, picturePanel, vendorPanel, namePanel;
-    JLabel titelNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, coinsLabel, coinsnNumber;
-    JButton startButton, choice1, choice2, choice3, choice4, inventoryButton, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, nameButton;
+    public JFrame window;
+    public Container container;
+    public JTextField nameField;
+    public JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel, picturePanel, vendorPanel, namePanel;
+    public JLabel titelNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, coinsLabel, coinsnNumber;
+    public JButton startButton, choice1, choice2, choice3, choice4, inventoryButton, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, nameButton;
     public JButton vendor1, vendor2, vendor3, vendor4, vendor5, vendor6, vendor7, vendor8, vendor9, vendor10, vendor11, vendor12, vendor13, vendor14, vendor15, vendor16, vendor17, vendor18, vendor19, vendor20, vendor21, vendor22, vendor23, vendor24;
-    JTextArea mainTextArea;
-    Font titelFont = new Font("Times New Roman", Font.PLAIN, 62);
-    Font gameFont = new Font("Times New Roman", Font.PLAIN, 27);
-    Font vendorFont = new Font("Times New Roman", Font.PLAIN, 20);
-    int playerHP, silverRing;
-    int monsterHP;
-    boolean canDrink = true;
-    boolean guardKnowsName = true;
-    String weapon, position;
+    public JTextArea mainTextArea;
+    public Font titelFont = new Font("Times New Roman", Font.PLAIN, 62);
+    public Font gameFont = new Font("Times New Roman", Font.PLAIN, 27);
+    public Font vendorFont = new Font("Times New Roman", Font.PLAIN, 20);
+    public int playerHP, silverRing;
+    public int monsterHP;
+    public boolean canDrink = true;
+    public boolean guardKnowsName = true;
+    public String weapon, position;
+
+
+
+    private String position1;
+    private String position2;
+    private String position3;
+
+
+
+    private String position4;
 
     private final Item worms = new Item("Worms", 5,0,2);
     private final Inventory inventory = new Inventory();
@@ -46,7 +56,12 @@ public class Ui {
     InventoryHandler invHandler = new InventoryHandler();
     VendorHandler vendorHandler = new VendorHandler();
 
-    public Ui() {
+
+    public  Ui(){
+
+    }
+
+    public void makeUi() {
 
         monsterHP = goblin.getMonsterHP();
 
@@ -272,7 +287,7 @@ public class Ui {
         vendorPanel = new JPanel();
         vendorPanel.setBounds(30, 50, 650, 400);
         vendorPanel.setBackground(Color.white);
-       vendorPanel.setLayout(new GridLayout(8,3));
+        vendorPanel.setLayout(new GridLayout(8,3));
         vendorPanel.setVisible(false);
         container.add(vendorPanel);
 
@@ -543,6 +558,7 @@ public class Ui {
 
     }
 
+
     public void initVendor(){
 
 vendor5.setText("test");
@@ -652,7 +668,7 @@ vendor5.setText("test");
         playerHP = 15;
         player.setPosition("startup");
         player.setWeapon(knife);
-
+        goblin.setMonsterHP(15);
         weapon = knife.getName();
         silverRing = 0;
         weaponLabelName.setText(weapon);
@@ -686,17 +702,14 @@ vendor5.setText("test");
 
     public void townGate() {
 
-
-
         mainTextArea.setText("You are at the gates of the town. \nA guard is standing in front of you. \n\nWhat do you do? ");
         position = "townGate";
         player.setCoins(5000);
-        silverRing =0;
 
         coinsnNumber.setText("" + player.getCoins());
 
 //        ImageIcon townsgateImg = new ImageIcon(getClass().getClassLoader().getResource("Images/townsgate.png"));
-//        
+//
 //        picturePanel.add(new JLabel(townsgateImg));
 //ImageIcon townsgate = new ImageIcon("Images/townsgate.png");
 //picturePanel.set
@@ -765,7 +778,7 @@ vendor5.setText("test");
 
     public void witch() {
         position = "witch";
-        mainTextArea.setText("Hello traveler, \nAre you interested in one of my potions? ");
+        mainTextArea.setText("Witch: Hello traveler, \nAre you interested in one of my potions? ");
         choice1.setText("Go back");
         choice2.setText("Yes");
         choice3.setText("");
@@ -778,7 +791,7 @@ vendor5.setText("test");
 //        while (inventory.getItems().get(invNumber) != null && invNumber < 7){
 //            invNumber++;
 //        }
-//        if (inventory.getItems().get(invNumber) == null) 
+//        if (inventory.getItems().get(invNumber) == null)
         {
             mainTextArea.setText("Woman: Use this special brew when you are low on Hp,\nIt will restore a bit.");
             if (inventory.getItems().size() < 8) {
@@ -973,7 +986,7 @@ vendor5.setText("test");
 
         choice1.setText(horvath.getVendorItems().get(0).getName() + " " + horvath.getVendorItems().get(0).getPrice() + "coins");
         choice2.setText(horvath.getVendorItems().get(1).getName() + " " + horvath.getVendorItems().get(1).getPrice() + "coins");
-        
+
         vendor1.setText(horvath.getVendorItems().get(0).getName() + " " + horvath.getVendorItems().get(0).getPrice() + "coins");
         vendor2.setText(horvath.getVendorItems().get(1).getName() + " " + horvath.getVendorItems().get(1).getPrice() + "coins");
         vendor3.setText(horvath.getVendorItems().get(2).getName() + " " + horvath.getVendorItems().get(2).getPrice() + "coins");
@@ -1017,6 +1030,14 @@ vendor5.setText("test");
         public void actionPerformed(ActionEvent event) {
 
             String yourChoice = event.getActionCommand();
+//            switch (yourChoice){
+//               case "c1": player.setPosition(pos.getNextPosition1());
+//                case "c2": player.setPosition(pos.getNextPosition2());
+//                case "c3": player.setPosition(pos.getNextPosition2());
+//                case "c4": player.setPosition(pos.getNextPosition2());
+//            }
+
+
 
             switch (position) {
 
@@ -1047,7 +1068,7 @@ vendor5.setText("test");
                             attackGuard();
                             break;
                         case "c3":
-                            crossRoad();
+                                crossRoad();
                             break;
                         case "c4":
                             break;
@@ -1106,15 +1127,15 @@ vendor5.setText("test");
                             break;
                     }
                     break;
-                    
+
                 case "eastSwordFound":
                     switch (yourChoice) {
                         case "c1":
                             crossRoad();
-                            
+
 
                     }break;
-                    
+
                 case "town2":
                     switch (yourChoice) {
                         case "c1":
