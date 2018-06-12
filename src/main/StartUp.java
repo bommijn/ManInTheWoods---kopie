@@ -15,8 +15,7 @@ import ManInTheWoods.Ui;
 public class StartUp {
 
     public static void main(String[] args)  {
-        Ui ui  = new Ui();
-        ui.makeUi();
+  new Ui();
     }
     
     
