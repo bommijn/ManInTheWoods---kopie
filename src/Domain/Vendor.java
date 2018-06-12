@@ -5,8 +5,6 @@
  */
 package Domain;
 
-
-
 import java.util.ArrayList;
 
 /**
@@ -14,13 +12,12 @@ import java.util.ArrayList;
  * @author Bram
  */
 public class Vendor {
-
-
+    
     private String name;
-     ArrayList<Item> vendorItems;
-
+     ArrayList<SuperItem> vendorItems;
+    
     public Vendor(String name){
-
+    
        this.name = name;
     this.vendorItems = new ArrayList<>();
     }
@@ -29,10 +26,7 @@ public class Vendor {
         return name;
     }
 
-
-
-
-    public ArrayList<Item> getVendorItems() {
+    public ArrayList<SuperItem> getVendorItems() {
         return vendorItems;
     }
 
@@ -40,7 +34,7 @@ public class Vendor {
         this.name = name;
     }
 
-    public void setVendorItems(ArrayList<Item> vendorItems) {
+    public void setVendorItems(ArrayList<SuperItem> vendorItems) {
         this.vendorItems = vendorItems;
     }
     

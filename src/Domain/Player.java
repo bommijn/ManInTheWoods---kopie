@@ -19,11 +19,11 @@ public class Player {
 
 
     private int coins;
-    private Item weapon;
+    private SuperItem weapon;
 
 
 
-    public Player(int playerHp, Item weapon, int coins, String position){
+    public Player(int playerHp, SuperItem weapon, int coins, String position){
 
         this.position = position;
         this.coins = coins;
@@ -31,7 +31,7 @@ public class Player {
         setWeapon(weapon);
     }
 
-    public Item getWeapon() {
+    public SuperItem getWeapon() {
         return weapon;
     }
 
@@ -67,7 +67,7 @@ public class Player {
         this.position = position;
     }
 
-   public void setWeapon(Item weapon) {
+   public void setWeapon(SuperItem weapon) {
         this.weapon = weapon;
     }
     

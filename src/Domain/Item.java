@@ -4,8 +4,8 @@ public class Item {
 
     private String name;
     private int healingValue;
-private int dmgValue;
-private int price;
+    private int dmgValue;
+    private int price;
     public Item(String name, int healingValue, int dmgValue, int price){
 
         this.name = name;

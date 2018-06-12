@@ -5,16 +5,12 @@
  */
 package Domain;
 
-
-
 /**
  *
  * @author Bram
  */
-
-
-
 public class Position {
+
 
 }
 

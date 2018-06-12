@@ -13,9 +13,9 @@ import ManInTheWoods.Ui;
  * @author Bram
  */
 public class StartUp {
-
+    
     public static void main(String[] args)  {
-  new Ui();
+        new Ui();
     }
     
     
