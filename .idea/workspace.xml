@@ -4,58 +4,14 @@
     <bookmark url="file://$PROJECT_DIR$/src/ManInTheWoods/Ui.java" line="2030" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="340d9c31-3eb3-4e6f-a8b6-272563b6d9e7" name="Default" comment="vendor buying fixed">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" afterPath="$PROJECT_DIR$/.gitattributes" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="340d9c31-3eb3-4e6f-a8b6-272563b6d9e7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change beforePath="$PROJECT_DIR$/ManInTheWoods - kopie.iml" afterPath="$PROJECT_DIR$/ManInTheWoods - kopie.iml" />
-      <change beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change beforePath="$PROJECT_DIR$/build/built-jar.properties" afterPath="$PROJECT_DIR$/build/built-jar.properties" />
-      <change beforePath="$PROJECT_DIR$/build/classes/ManInTheWoods/Ui$ChoiceHandler.class" afterPath="$PROJECT_DIR$/build/classes/ManInTheWoods/Ui$ChoiceHandler.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/ManInTheWoods/Ui$TitleScreenHandler.class" afterPath="$PROJECT_DIR$/build/classes/ManInTheWoods/Ui$TitleScreenHandler.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/ManInTheWoods/Ui.class" afterPath="$PROJECT_DIR$/build/classes/ManInTheWoods/Ui.class" />
-      <change beforePath="$PROJECT_DIR$/dist/ManInTheWoods.jar" afterPath="$PROJECT_DIR$/dist/ManInTheWoods.jar" />
-      <change beforePath="$PROJECT_DIR$/manifest.mf" afterPath="$PROJECT_DIR$/manifest.mf" />
-      <change beforePath="$PROJECT_DIR$/nbproject/build-impl (2).xml" afterPath="$PROJECT_DIR$/nbproject/build-impl (2).xml" />
-      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" afterPath="$PROJECT_DIR$/nbproject/build-impl.xml" />
-      <change beforePath="$PROJECT_DIR$/nbproject/configs/Run_as_WebStart.properties" afterPath="$PROJECT_DIR$/nbproject/configs/Run_as_WebStart.properties" />
-      <change beforePath="$PROJECT_DIR$/nbproject/configs/Run_in_Browser.properties" afterPath="$PROJECT_DIR$/nbproject/configs/Run_in_Browser.properties" />
-      <change beforePath="$PROJECT_DIR$/nbproject/genfiles (2).properties" afterPath="$PROJECT_DIR$/nbproject/genfiles (2).properties" />
-      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" />
-      <change beforePath="$PROJECT_DIR$/nbproject/jfx-impl.xml" afterPath="$PROJECT_DIR$/nbproject/jfx-impl.xml" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/configs/Run_as_WebStart.properties" afterPath="$PROJECT_DIR$/nbproject/private/configs/Run_as_WebStart.properties" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/configs/Run_in_Browser.properties" afterPath="$PROJECT_DIR$/nbproject/private/configs/Run_in_Browser.properties" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private (2).properties" afterPath="$PROJECT_DIR$/nbproject/private/private (2).properties" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project (2).properties" afterPath="$PROJECT_DIR$/nbproject/project (2).properties" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project (2).xml" afterPath="$PROJECT_DIR$/nbproject/project (2).xml" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" afterPath="$PROJECT_DIR$/nbproject/project.properties" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" afterPath="$PROJECT_DIR$/nbproject/project.xml" />
       <change beforePath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/Domain/Item.class" afterPath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/Domain/Item.class" />
       <change beforePath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/Domain/Position.class" afterPath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/Domain/Position.class" />
       <change beforePath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/ManInTheWoods/Ui$ChoiceHandler.class" afterPath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/ManInTheWoods/Ui$ChoiceHandler.class" />
       <change beforePath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/ManInTheWoods/Ui$InventoryHandler.class" afterPath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/ManInTheWoods/Ui$InventoryHandler.class" />
       <change beforePath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/ManInTheWoods/Ui$TitleScreenHandler.class" afterPath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/ManInTheWoods/Ui$TitleScreenHandler.class" />
       <change beforePath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/ManInTheWoods/Ui.class" afterPath="$PROJECT_DIR$/out/production/ManInTheWoods - kopie/ManInTheWoods/Ui.class" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/libraries/OSBot_2_5_2.xml" afterPath="$PROJECT_DIR$/src/.idea/libraries/OSBot_2_5_2.xml" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/libraries/OSBot_2_5_21.xml" afterPath="$PROJECT_DIR$/src/.idea/libraries/OSBot_2_5_21.xml" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" afterPath="$PROJECT_DIR$/src/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" afterPath="$PROJECT_DIR$/src/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/src.iml" afterPath="$PROJECT_DIR$/src/.idea/src.iml" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/workspace.xml" afterPath="$PROJECT_DIR$/src/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/CoinGenerator.java" afterPath="$PROJECT_DIR$/src/Domain/CoinGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Inventory.java" afterPath="$PROJECT_DIR$/src/Domain/Inventory.java" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Item.java" afterPath="$PROJECT_DIR$/src/Domain/Item.java" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Monster.java" afterPath="$PROJECT_DIR$/src/Domain/Monster.java" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Player.java" afterPath="$PROJECT_DIR$/src/Domain/Player.java" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Position.java" afterPath="$PROJECT_DIR$/src/Domain/Position.java" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Vendor.java" afterPath="$PROJECT_DIR$/src/Domain/Vendor.java" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Weapon.java" afterPath="$PROJECT_DIR$/src/Domain/Weapon.java" />
-      <change beforePath="$PROJECT_DIR$/src/ManInTheWoods/Ui.java" afterPath="$PROJECT_DIR$/src/ManInTheWoods/Ui.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/StartUp.java" afterPath="$PROJECT_DIR$/src/main/StartUp.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -259,7 +215,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="3" />
     <option name="y" value="45" />
     <option name="width" value="1798" />
@@ -479,14 +435,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528799948121</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="vendor buying fixed">
+      <created>1528800267512</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1528800267512</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="3104000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3" y="45" width="1798" height="1440" extended-state="0" />
+    <frame x="3" y="45" width="1798" height="1440" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
