@@ -5,10 +5,7 @@
  */
 package Domain;
 
-/**
- *
- * @author Bram
- */
+
 public class Player {
     
     

@@ -5,17 +5,13 @@
  */
 package main;
 
-import ManInTheWoods.Ui;
 
+import Domain.Game;
 
-/**
- *
- * @author Bram
- */
 public class StartUp {
     
     public static void main(String[] args)  {
-        new Ui();
+        new Game();
     }
     
     

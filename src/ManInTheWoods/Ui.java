@@ -1,4 +1,4 @@
-package ManInTheWoods;
+/*package ManInTheWoods;
 
 import Domain.*;
 
@@ -12,23 +12,24 @@ import java.util.Random;
 
 public class Ui {
 
-    JFrame window;
-    Container container;
-    JPanel titelNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel, picturePanel, vendorPanel;
-    JLabel titelNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, coinsLabel, coinsnNumber;
-    JButton startButton, choice1, choice2, choice3, choice4, inventoryButton, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8;
-    JButton vendor1, vendor2, vendor3, vendor4, vendor5, vendor6, vendor7, vendor8, vendor9, vendor10, vendor11, vendor12, vendor13, vendor14, vendor15, vendor16, vendor17, vendor18, vendor19, vendor20, vendor21, vendor22, vendor23, vendor24;
-    JTextArea mainTextArea;
-    Font titelFont = new Font("Times New Roman", Font.PLAIN, 62);
-    Font gameFont = new Font("Times New Roman", Font.PLAIN, 27);
-    Font vendorFont = new Font("Times New Roman", Font.PLAIN, 15);
-    int playerHP, silverRing;
-    int monsterHP;
-    boolean inCombat = false;
-    boolean canDrink = true;
-    String weapon, position;
+
+    private  int playerHP, silverRing;
+    private  int monsterHP;
+    private  boolean inCombat = false;
+    private  boolean canDrink = true;
+    private  String weapon;
+    private String position;
+
+
+
+    private String nextPosition1;
+    private String nextPosition2;
+    private String nextPosition3;
+    private String nextPosition4;
 
     private final Item_LongSword longSword = new Item_LongSword();
+
+
     private final Item_Batleaxe battleAxe = new Item_Batleaxe();
     private final Item_Bread loafOfBread = new Item_Bread();
     private final Item_Potion potion = new Item_Potion();
@@ -48,470 +49,242 @@ public class Ui {
 
         monsterHP = goblin.getMonsterHP();
 
-        window = new JFrame();
-        window.setSize(1200, 800);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.getContentPane().setBackground(Color.BLACK);
-        window.setLayout(null);
-        window.setVisible(true);
-        container = window.getContentPane();
 
-        //creation of titellabel and titelpanel
-        titelNamePanel = new JPanel();
-        titelNamePanel.setBounds(100, 100, 1000, 300);
-        titelNamePanel.setBackground(Color.BLACK);
-        titelNameLabel = new JLabel("Man in the woods");
-        titelNameLabel.setFont(titelFont);
-        titelNameLabel.setForeground(Color.WHITE);
-
-        //creation of startbutton panel
-        startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(475, 400, 200, 100);
-        startButtonPanel.setBackground(Color.BLACK);
-
-        //creation of startbutton.
-        startButton = new JButton("START");
-        startButton.setBackground(Color.black);
-        startButton.setForeground(Color.white);
-        startButton.setFont(gameFont);
-        startButton.setFocusPainted(false);
-        startButton.addActionListener(tsHandler);
-
-        //adding on panels
-        titelNamePanel.add(titelNameLabel);
-        startButtonPanel.add(startButton);
-
-        //adding to container
-        container.add(titelNamePanel);
-        container.add(startButtonPanel);
 
     }
 
+
+
+
+
+
     public void createGameScreen() {
 
-        titelNamePanel.setVisible(false);
-        startButtonPanel.setVisible(false);
-
-        mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(25, 500, 600, 250);
-        mainTextPanel.setBackground(Color.black);
-        container.add(mainTextPanel);
-
-        mainTextArea = new JTextArea();
-        mainTextArea.setBounds(100, 100, 600, 250);
-        mainTextArea.setBackground(Color.BLACK);
-        mainTextArea.setForeground(Color.white);
-        mainTextArea.setFont(gameFont);
-        mainTextArea.setLineWrap(true);
-        mainTextPanel.add(mainTextArea);
-
-        //Creation choice button panel
-        choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(830, 550, 300, 150);
-        choiceButtonPanel.setBackground(Color.BLACK);
-        choiceButtonPanel.setLayout(new GridLayout(5, 1));
-        container.add(choiceButtonPanel);
-
-        //creation choice button 1
-        choice1 = new JButton();
-        choice1.setBackground(Color.black);
-        choice1.setForeground(Color.white);
-        choice1.setFont(gameFont);
-        choice1.setFocusPainted(false);
-        choice1.addActionListener(choiceHandler);
-        choice1.setActionCommand("c1");
-        choiceButtonPanel.add(choice1);
-
-        //creation button 2
-        choice2 = new JButton();
-        choice2.setBackground(Color.black);
-        choice2.setForeground(Color.white);
-        choice2.setFont(gameFont);
-        choice2.setFocusPainted(false);
-        choice2.addActionListener(choiceHandler);
-        choice2.setActionCommand("c2");
-        choiceButtonPanel.add(choice2);
-
-        //creation button 3
-        choice3 = new JButton();
-        choice3.setBackground(Color.black);
-        choice3.setForeground(Color.white);
-        choice3.setFont(gameFont);
-        choice3.setFocusPainted(false);
-        choice3.addActionListener(choiceHandler);
-        choice3.setActionCommand("c3");
-        choiceButtonPanel.add(choice3);
-
-        //creation button 4
-        choice4 = new JButton();
-        choice4.setBackground(Color.black);
-        choice4.setForeground(Color.white);
-        choice4.setFont(gameFont);
-        choice4.setFocusPainted(false);
-        choice4.addActionListener(choiceHandler);
-        choice4.setActionCommand("c4");
-        choiceButtonPanel.add(choice4);
-
-        //creation inventory button
-        inventoryButton = new JButton("Inventory");
-        inventoryButton.setBackground(Color.black);
-        inventoryButton.setForeground(Color.white);
-        inventoryButton.setFont(gameFont);
-        inventoryButton.addActionListener(invHandler);
-        inventoryButton.setActionCommand("invbutton");
-        choiceButtonPanel.add(inventoryButton);
-
-        //creation inventory panel
-        inventoryPanel = new JPanel();
-        inventoryPanel.setBounds(830, 15, 300, 450);
-        inventoryPanel.setLayout(new GridLayout(8, 1));
-        inventoryPanel.setVisible(false);
-        inventoryPanel.setBackground(Color.BLACK);
-        inventoryPanel.setForeground(Color.WHITE);
-        container.add(inventoryPanel);
-
-        //creation inventory button.
-        inv1 = new JButton();
-        inv1.setForeground(Color.WHITE);
-        inv1.setBackground(Color.black);
-        inv1.setVisible(true);
-        inv1.setFont(gameFont);
-        inv1.addActionListener(invHandler);
-        inv1.setActionCommand("iv1");
-        inventoryPanel.add(inv1);
-
-        inv2 = new JButton();
-        inv2.setForeground(Color.WHITE);
-        inv2.setBackground(Color.black);
-        inv2.setVisible(true);
-        inv2.setFont(gameFont);
-        inv2.addActionListener(invHandler);
-        inv2.setActionCommand("iv2");
-        inventoryPanel.add(inv2);
-
-        inv3 = new JButton();
-        inv3.setForeground(Color.WHITE);
-        inv3.setBackground(Color.black);
-        inv3.setVisible(true);
-        inv3.setFont(gameFont);
-        inv3.addActionListener(invHandler);
-        inv3.setActionCommand("iv3");
-        inventoryPanel.add(inv3);
-
-        inv4 = new JButton();
-        inv4.setForeground(Color.WHITE);
-        inv4.setBackground(Color.black);
-        inv4.setVisible(true);
-        inv4.setFont(gameFont);
-        inv4.addActionListener(invHandler);
-        inv4.setActionCommand("iv4");
-        inventoryPanel.add(inv4);
-
-        inv5 = new JButton();
-        inv5.setForeground(Color.WHITE);
-        inv5.setBackground(Color.black);
-        inv5.setVisible(true);
-        inv5.setFont(gameFont);
-        inv5.addActionListener(invHandler);
-        inv5.setActionCommand("iv5");
-        inventoryPanel.add(inv5);
-
-        inv6 = new JButton();
-        inv6.setForeground(Color.WHITE);
-        inv6.setBackground(Color.black);
-        inv6.setVisible(true);
-        inv6.setFont(gameFont);
-        inv6.addActionListener(invHandler);
-        inv6.setActionCommand("iv6");
-        inventoryPanel.add(inv6);
-
-        inv7 = new JButton();
-        inv7.setForeground(Color.WHITE);
-        inv7.setBackground(Color.black);
-        inv7.setVisible(true);
-        inv7.setFont(gameFont);
-        inv7.addActionListener(invHandler);
-        inv7.setActionCommand("iv7");
-        inventoryPanel.add(inv7);
-
-        inv8 = new JButton();
-        inv8.setForeground(Color.WHITE);
-        inv8.setBackground(Color.black);
-        inv8.setVisible(true);
-        inv8.setFont(gameFont);
-        inv8.addActionListener(invHandler);
-        inv8.setActionCommand("iv8");
-        inventoryPanel.add(inv8);
-
-        //Creation picture panel
-        picturePanel = new JPanel();
-        picturePanel.setBounds(30, 50, 650, 400);
-        picturePanel.setBackground(Color.white);
-        container.add(picturePanel);
-
-        //Creation vendor panel
-        vendorPanel = new JPanel();
-        vendorPanel.setBounds(30, 50, 650, 400);
-        vendorPanel.setVisible(false);
-        vendorPanel.setBackground(Color.white);
-        vendorPanel.setLayout(new GridLayout(8, 3));
-        container.add(vendorPanel);
-
-        //vendor buttons
-        vendor1 = new JButton();
-        vendor1.setForeground(Color.WHITE);
-        vendor1.setBackground(Color.black);
-        vendor1.setVisible(true);
-        vendor1.setFont(vendorFont);
-        vendor1.addActionListener(vendorHandler);
-        vendor1.setActionCommand("vd1");
-        vendorPanel.add(vendor1);
-
-        vendor2 = new JButton();
-        vendor2.setForeground(Color.WHITE);
-        vendor2.setBackground(Color.black);
-        vendor2.setVisible(true);
-        vendor2.setFont(vendorFont);
-        vendor2.addActionListener(vendorHandler);
-        vendor2.setActionCommand("vd2");
-        vendorPanel.add(vendor2);
-
-        vendor3 = new JButton();
-        vendor3.setForeground(Color.WHITE);
-        vendor3.setBackground(Color.black);
-        vendor3.setVisible(true);
-        vendor3.setFont(vendorFont);
-        vendor3.addActionListener(vendorHandler);
-        vendor3.setActionCommand("vd3");
-        vendorPanel.add(vendor3);
-
-        vendor4 = new JButton();
-        vendor4.setForeground(Color.WHITE);
-        vendor4.setBackground(Color.black);
-        vendor4.setVisible(true);
-        vendor4.setFont(vendorFont);
-        vendor4.addActionListener(vendorHandler);
-        vendor4.setActionCommand("vd4");
-        vendorPanel.add(vendor4);
-
-        vendor5 = new JButton();
-        vendor5.setForeground(Color.WHITE);
-        vendor5.setBackground(Color.black);
-        vendor5.setVisible(true);
-        vendor5.setFont(vendorFont);
-        vendor5.addActionListener(vendorHandler);
-        vendor5.setActionCommand("vd5");
-        vendorPanel.add(vendor5);
-
-        vendor6 = new JButton();
-        vendor6.setForeground(Color.WHITE);
-        vendor6.setBackground(Color.black);
-        vendor6.setVisible(true);
-        vendor6.setFont(vendorFont);
-        vendor6.addActionListener(vendorHandler);
-        vendor6.setActionCommand("vd6");
-        vendorPanel.add(vendor6);
-
-        vendor7 = new JButton();
-        vendor7.setForeground(Color.WHITE);
-        vendor7.setBackground(Color.black);
-        vendor7.setVisible(true);
-        vendor7.setFont(vendorFont);
-        vendor7.addActionListener(vendorHandler);
-        vendor7.setActionCommand("vd7");
-        vendorPanel.add(vendor7);
-
-        vendor8 = new JButton();
-        vendor8.setForeground(Color.WHITE);
-        vendor8.setBackground(Color.black);
-        vendor8.setVisible(true);
-        vendor8.setFont(vendorFont);
-        vendor8.addActionListener(vendorHandler);
-        vendor8.setActionCommand("vd8");
-        vendorPanel.add(vendor8);
-
-        vendor9 = new JButton();
-        vendor9.setForeground(Color.WHITE);
-        vendor9.setBackground(Color.black);
-        vendor9.setVisible(true);
-        vendor9.setFont(vendorFont);
-        vendor9.addActionListener(vendorHandler);
-        vendor9.setActionCommand("vd9");
-        vendorPanel.add(vendor9);
-
-        vendor10 = new JButton();
-        vendor10.setForeground(Color.WHITE);
-        vendor10.setBackground(Color.black);
-        vendor10.setVisible(true);
-        vendor10.setFont(vendorFont);
-        vendor10.addActionListener(vendorHandler);
-        vendor10.setActionCommand("vd10");
-        vendorPanel.add(vendor10);
-
-        vendor11 = new JButton();
-        vendor11.setForeground(Color.WHITE);
-        vendor11.setBackground(Color.black);
-        vendor11.setVisible(true);
-        vendor11.setFont(vendorFont);
-        vendor11.addActionListener(vendorHandler);
-        vendor11.setActionCommand("vd11");
-        vendorPanel.add(vendor11);
-
-        vendor12 = new JButton();
-        vendor12.setForeground(Color.WHITE);
-        vendor12.setBackground(Color.black);
-        vendor12.setVisible(true);
-        vendor12.setFont(vendorFont);
-        vendor12.addActionListener(vendorHandler);
-        vendor12.setActionCommand("vd13");
-        vendorPanel.add(vendor12);
-
-        vendor13 = new JButton();
-        vendor13.setForeground(Color.WHITE);
-        vendor13.setBackground(Color.black);
-        vendor13.setVisible(true);
-        vendor13.setFont(vendorFont);
-        vendor13.addActionListener(vendorHandler);
-        vendor13.setActionCommand("vd13");
-        vendorPanel.add(vendor13);
-
-        vendor14 = new JButton();
-        vendor14.setForeground(Color.WHITE);
-        vendor14.setBackground(Color.black);
-        vendor14.setVisible(true);
-        vendor14.setFont(vendorFont);
-        vendor14.addActionListener(vendorHandler);
-        vendor14.setActionCommand("vd14");
-        vendorPanel.add(vendor14);
-
-        vendor15 = new JButton();
-        vendor15.setForeground(Color.WHITE);
-        vendor15.setBackground(Color.black);
-        vendor15.setVisible(true);
-        vendor15.setFont(vendorFont);
-        vendor15.addActionListener(vendorHandler);
-        vendor15.setActionCommand("vd15");
-        vendorPanel.add(vendor15);
-
-        vendor16 = new JButton();
-        vendor16.setForeground(Color.WHITE);
-        vendor16.setBackground(Color.black);
-        vendor16.setVisible(true);
-        vendor16.setFont(vendorFont);
-        vendor16.addActionListener(vendorHandler);
-        vendor16.setActionCommand("vd16");
-        vendorPanel.add(vendor16);
-
-        vendor17 = new JButton();
-        vendor17.setForeground(Color.WHITE);
-        vendor17.setBackground(Color.black);
-        vendor17.setVisible(true);
-        vendor17.setFont(vendorFont);
-        vendor17.addActionListener(vendorHandler);
-        vendor17.setActionCommand("vd17");
-        vendorPanel.add(vendor17);
-
-        vendor18 = new JButton();
-        vendor18.setForeground(Color.WHITE);
-        vendor18.setBackground(Color.black);
-        vendor18.setVisible(true);
-        vendor18.setFont(vendorFont);
-        vendor18.addActionListener(vendorHandler);
-        vendor18.setActionCommand("vd18");
-        vendorPanel.add(vendor18);
-
-        vendor19 = new JButton();
-        vendor19.setForeground(Color.WHITE);
-        vendor19.setBackground(Color.black);
-        vendor19.setVisible(true);
-        vendor19.setFont(vendorFont);
-        vendor19.addActionListener(vendorHandler);
-        vendor19.setActionCommand("vd19");
-        vendorPanel.add(vendor19);
-
-        vendor20 = new JButton();
-        vendor20.setForeground(Color.WHITE);
-        vendor20.setBackground(Color.black);
-        vendor20.setVisible(true);
-        vendor20.setFont(vendorFont);
-        vendor20.addActionListener(vendorHandler);
-        vendor20.setActionCommand("vd20");
-        vendorPanel.add(vendor20);
-
-        vendor21 = new JButton();
-        vendor21.setForeground(Color.WHITE);
-        vendor21.setBackground(Color.black);
-        vendor21.setVisible(true);
-        vendor21.setFont(vendorFont);
-        vendor21.addActionListener(vendorHandler);
-        vendor21.setActionCommand("vd21");
-        vendorPanel.add(vendor21);
-
-        vendor22 = new JButton();
-        vendor22.setForeground(Color.WHITE);
-        vendor22.setBackground(Color.black);
-        vendor22.setVisible(true);
-        vendor22.setFont(vendorFont);
-        vendor22.addActionListener(vendorHandler);
-        vendor22.setActionCommand("vd22");
-        vendorPanel.add(vendor22);
-
-        vendor23 = new JButton();
-        vendor23.setForeground(Color.WHITE);
-        vendor23.setBackground(Color.black);
-        vendor23.setVisible(true);
-        vendor23.setFont(vendorFont);
-        vendor23.addActionListener(vendorHandler);
-        vendor23.setActionCommand("vd23");
-        vendorPanel.add(vendor23);
-
-        vendor24 = new JButton();
-        vendor24.setForeground(Color.WHITE);
-        vendor24.setBackground(Color.black);
-        vendor24.setVisible(true);
-        vendor24.setFont(vendorFont);
-        vendor24.addActionListener(vendorHandler);
-        vendor24.setActionCommand("vd24");
-        vendorPanel.add(vendor24);
 
 
-        playerPanel = new JPanel();
-        playerPanel.setBounds(830, 470, 300, 75);
-        playerPanel.setBackground(Color.darkGray);
-        playerPanel.setLayout(new GridLayout(3, 3));
-        container.add(playerPanel);
 
-        hpLabel = new JLabel("Hp:");
-        hpLabel.setFont(gameFont);
-        hpLabel.setForeground(Color.WHITE);
-        playerPanel.add(hpLabel);
-        hpLabelNumber = new JLabel();
-        hpLabelNumber.setFont(gameFont);
-        hpLabelNumber.setForeground(Color.WHITE);
-        coinsLabel = new JLabel("Coins:");
-        coinsLabel.setFont(gameFont);
-        coinsLabel.setForeground(Color.WHITE);
-        coinsnNumber = new JLabel();
-        coinsnNumber.setFont(gameFont);
-        coinsnNumber.setText("" + player.getCoins());
-        coinsnNumber.setForeground(Color.WHITE);
-
-        playerPanel.add(hpLabelNumber);
-
-        weaponLabel = new JLabel("Weapon:");
-        weaponLabel.setFont(gameFont);
-        weaponLabel.setForeground(Color.WHITE);
-        playerPanel.add(weaponLabel);
-
-        weaponLabelName = new JLabel();
-        weaponLabelName.setFont(gameFont);
-        weaponLabelName.setForeground(Color.WHITE);
-        playerPanel.add(weaponLabelName);
-        playerPanel.add(coinsLabel);
-        playerPanel.add(coinsnNumber);
 
         playerSetup();
 
+
+
+    }
+
+    public void setNextPosition1(String nextPosition1) {
+        this.nextPosition1 = nextPosition1;
+    }
+
+    public void setNextPosition2(String nextPosition2) {
+        this.nextPosition2 = nextPosition2;
+    }
+
+    public void setNextPosition3(String nextPosition3) {
+        this.nextPosition3 = nextPosition3;
+    }
+
+    public void setNextPosition4(String nextPosition4) {
+        this.nextPosition4 = nextPosition4;
+    }
+
+    public String getNextPosition1() {
+        return nextPosition1;
+    }
+
+    public String getNextPosition2() {
+        return nextPosition2;
+    }
+
+    public String getNextPosition3() {
+        return nextPosition3;
+    }
+
+    public String getNextPosition4() {
+        return nextPosition4;
+    }
+
+
+
+    public void changeTextChoice1(String text){
+        choice1.setText(text);
+
+    }
+
+    public void changeVisibleChoice1(boolean isVisble){
+
+        choice1.setVisible(isVisble);
+    }
+    public void changeTextChoice2(String text){
+        choice2.setText(text);
+
+    }
+    public void changeTextChoice3(String text){
+        choice3.setText(text);
+
+    }
+    public void changeTextChoice4(String text){
+        choice4.setText(text);
+
+    }
+
+    public void changeMainTextArea(String text){
+        mainTextArea.setText(text);
+    }
+
+    public void setPosition(String position){
+        this.position = position;
+
+    }
+
+    public void setInv1(JButton inv1) {
+        this.inv1 = inv1;
+    }
+
+    public void setInv2(JButton inv2) {
+        this.inv2 = inv2;
+    }
+
+    public void setInv3(JButton inv3) {
+        this.inv3 = inv3;
+    }
+
+    public void setInv4(JButton inv4) {
+        this.inv4 = inv4;
+    }
+
+    public void setInv5(JButton inv5) {
+        this.inv5 = inv5;
+    }
+
+    public void setInv6(JButton inv6) {
+        this.inv6 = inv6;
+    }
+
+    public void setInv7(JButton inv7) {
+        this.inv7 = inv7;
+    }
+
+    public void setInv8(JButton inv8) {
+        this.inv8 = inv8;
+    }
+
+    public void setVendor1(JButton vendor1) {
+        this.vendor1 = vendor1;
+    }
+
+    public void setVendor2(JButton vendor2) {
+        this.vendor2 = vendor2;
+    }
+
+    public void setVendor3(JButton vendor3) {
+        this.vendor3 = vendor3;
+    }
+
+    public void setVendor4(JButton vendor4) {
+        this.vendor4 = vendor4;
+    }
+
+    public void setVendor5(JButton vendor5) {
+        this.vendor5 = vendor5;
+    }
+
+    public void setVendor6(JButton vendor6) {
+        this.vendor6 = vendor6;
+    }
+
+    public void setVendor7(JButton vendor7) {
+        this.vendor7 = vendor7;
+    }
+
+    public void setVendor8(JButton vendor8) {
+        this.vendor8 = vendor8;
+    }
+
+    public void setVendor9(JButton vendor9) {
+        this.vendor9 = vendor9;
+    }
+
+    public void setVendor10(JButton vendor10) {
+        this.vendor10 = vendor10;
+    }
+
+    public void setVendor11(JButton vendor11) {
+        this.vendor11 = vendor11;
+    }
+
+    public void setVendor12(JButton vendor12) {
+        this.vendor12 = vendor12;
+    }
+
+    public void setVendor13(JButton vendor13) {
+        this.vendor13 = vendor13;
+    }
+
+    public void setVendor14(JButton vendor14) {
+        this.vendor14 = vendor14;
+    }
+
+    public void setVendor15(JButton vendor15) {
+        this.vendor15 = vendor15;
+    }
+
+    public void setVendor16(JButton vendor16) {
+        this.vendor16 = vendor16;
+    }
+
+    public void setVendor17(JButton vendor17) {
+        this.vendor17 = vendor17;
+    }
+
+    public void setVendor18(JButton vendor18) {
+        this.vendor18 = vendor18;
+    }
+
+    public void setVendor19(JButton vendor19) {
+        this.vendor19 = vendor19;
+    }
+
+    public void setVendor20(JButton vendor20) {
+        this.vendor20 = vendor20;
+    }
+
+    public void setVendor21(JButton vendor21) {
+        this.vendor21 = vendor21;
+    }
+
+    public void setVendor22(JButton vendor22) {
+        this.vendor22 = vendor22;
+    }
+
+    public void setVendor23(JButton vendor23) {
+        this.vendor23 = vendor23;
+    }
+
+    public void setVendor24(JButton vendor24) {
+        this.vendor24 = vendor24;
+    }
+
+    public void setMainTextArea(JTextArea mainTextArea) {
+        this.mainTextArea = mainTextArea;
+    }
+
+    public void setPlayerHP(int playerHP) {
+        this.playerHP = playerHP;
+    }
+
+    public void setMonsterHP(int monsterHP) {
+        this.monsterHP = monsterHP;
+    }
+
+    public void setInCombat(boolean inCombat) {
+        this.inCombat = inCombat;
+    }
+
+    public void setCanDrink(boolean canDrink) {
+        this.canDrink = canDrink;
+    }
+
+    public void setWeapon(String weapon) {
+        this.weapon = weapon;
     }
 
     public void initInventory() {
@@ -1280,6 +1053,8 @@ public class Ui {
         choice4.setText("");
     }
 
+
+
     public void getItem() {
 //       position = "getitem";
 //        int invNumber = 0;
@@ -1302,6 +1077,7 @@ public class Ui {
 //                inv3.setText(inventorySlot[invNumber].getName());
 //            } else if (invNumber == 3) {
 //                inv4.setText(inventorySlot[invNumber].getName());
+
 //            } else if (invNumber == 4) {
 //                inv5.setText(inventorySlot[invNumber].getName());
 //            } else if (invNumber == 5) {
@@ -1516,237 +1292,250 @@ public class Ui {
 
         @Override
         public void actionPerformed(ActionEvent event) {
-
+SuperPosition sp = new SuperPosition();
             String yourChoice = event.getActionCommand();
+nextPosition1 = sp.getNextPosition1();
 
-            switch (position) {
-
-                case "townGate":
-                    switch (yourChoice) {
-                        case "c1":
-                            if (silverRing == 1) {
-                                town2();
-                                break;
-                            } else {
-                                talkGuard();
-                                break;
-                            }
-                        case "c2":
-                            attackGuard();
-                            break;
-                        case "c3":
-                            crossRoad();
-                            break;
-                        case "c4":
-                            break;
-                    }
-                    break;
-
-                case "talkGuard":
-                    switch (yourChoice) {
-                        case "c1":
-                            townGate();
-                            break;
-                        case "c2":
-                            break;
-                        case "c3":
-                            break;
-                        case "c4":
-                            break;
-                    }
-                    break;
-
-                case "attackGuard":
-                    switch (yourChoice) {
-                        case "c1":
-                            if (playerHP < 1) {
-                                lose();
-                            } else {
-                                townGate();
-                                break;
-                            }
-                    }
-                    break;
-
-                case "crossRoad":
-                    switch (yourChoice) {
-                        case "c1":
-                            if (canDrink) {
-                                north();
-                            } else {
-                                northEmpty();
-                            }
-                            break;
-                        case "c2":
-                            east();
-                            break;
-                        case "c3":
-                            townGate();
-                            break;
-                        case "c4":
-                            west();
-                            break;
-                    }
-                    break;
-
-                case "town2":
-                    switch (yourChoice) {
-                        case "c1":
-                            vendorHorvath();
-                            break;
-                        case "c2":
-
-                    }
-                    break;
-
-                case "horvath":
-                    switch (yourChoice) {
-                        case "c1":
-
-                                break;
-
-                        case "c2":
-
-                                break;
-
-                    }
-                    break;
-
-                case "witch":
-                    switch (yourChoice) {
-                        case "c1":
-                            northEmpty();
-                            break;
-                        case "c2":
-
-                            getItem();
-                    }
-                    break;
-
-                case "getitem":
-                    switch (yourChoice) {
-                        case "c1":
-                            getItem();
-                            break;
-                        case "c2":
-                            northEmpty();
-                            break;
-                    }
-                    break;
-
-                case "north":
-                    switch (yourChoice) {
-                        case "c1":
-                            crossRoad();
-                            break;
-                        case "c2":
-                            break;
-                        case "c3":
-                            break;
-                        case "c4":
-                            break;
-                    }
-                    break;
-
-                case "northempty":
-                    switch (yourChoice) {
-                        case "c1":
-                            crossRoad();
-                            break;
-                        case "c2":
-                            witch();
-                            break;
-                    }
-                    break;
-
-                case "east":
-                    switch (yourChoice) {
-                        case "c1":
-                            crossRoad();
-                            break;
-                        case "c2":
-                            break;
-                    }
-                    break;
-
-                case "west":
-                    switch (yourChoice) {
-
-                        case "c1":
-                            fightGoblin();
-                            break;
-                        case "c2":
-                            crossRoad();
-                            break;
-                    }
-                    break;
-
-                case "fightgoblin":
-                    switch (yourChoice) {
-                        case "c1":
-                            playerAttack();
-                            break;
-                        case "c2":
-                            crossRoad();
-                            break;
-                    }
-                    break;
-
-                case "playerattack":
-                    switch (yourChoice) {
-                        case "c1":
-                            if (monsterHP < 1) {
-                                win();
-                            } else {
-                                monsterAttack();
-                            }
-                            break;
-                        case "c2":
-                            break;
-                    }
-                    break;
-
-                case "monsterattack":
-                    switch (yourChoice) {
-                        case "c1":
-                            if (playerHP < 1) {
-                                lose();
-                            } else {
-                                fightGoblin();
-                            }
-                            break;
-                        case "c2":
-                            break;
-                    }
-                    break;
-
-                case "lose":
-                    switch (yourChoice) {
-                        case "c1":
-                            startOver();
-                            break;
-                        case "c2":
-                            quitGame();
-                            break;
-                    }
-                    break;
-
-                case "win":
-                    switch (yourChoice) {
-                        case "c1":
-                            crossRoad();
-                            break;
-                    }
-                    break;
-
-                case "ending":
-                    switch (yourChoice) {
-                        case "c1":
-                            quitGame();
-                            break;
-                    }
-                    break;
+            switch (yourChoice){
+                case "c1":
+                    System.out.println(getNextPosition1());
+                    sp.doChoice1(); break;
             }
+
+
+
+//            switch (position) {
+//
+//                case "townGate":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            if (silverRing == 1) {
+//                                town2();
+//                                break;
+//                            } else {
+//                               SuperPosition sp = new SuperPosition(Ui.this);
+//                                sp.dot();
+//
+//
+//
+//                                break;
+//                            }
+//                        case "c2":
+//                            attackGuard();
+//                            break;
+//                        case "c3":
+//                            crossRoad();
+//                            break;
+//                        case "c4":
+//                            break;
+//                    }
+//                    break;
+//
+//                case "talkGuard":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            townGate();
+//                            break;
+//                        case "c2":
+//                            break;
+//                        case "c3":
+//                            break;
+//                        case "c4":
+//                            break;
+//                    }
+//                    break;
+//
+//                case "attackGuard":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            if (playerHP < 1) {
+//                                lose();
+//                            } else {
+//                                townGate();
+//                                break;
+//                            }
+//                    }
+//                    break;
+//
+//                case "crossRoad":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            if (canDrink) {
+//                                north();
+//                            } else {
+//                                northEmpty();
+//                            }
+//                            break;
+//                        case "c2":
+//                            east();
+//                            break;
+//                        case "c3":
+//                            townGate();
+//                            break;
+//                        case "c4":
+//                            west();
+//                            break;
+//                    }
+//                    break;
+//
+//                case "town2":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            vendorHorvath();
+//                            break;
+//                        case "c2":
+//
+//                    }
+//                    break;
+//
+//                case "horvath":
+//                    switch (yourChoice) {
+//                        case "c1":
+//
+//                                break;
+//
+//                        case "c2":
+//
+//                                break;
+//
+//                    }
+//                    break;
+//
+//                case "witch":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            northEmpty();
+//                            break;
+//                        case "c2":
+//
+//                            getItem();
+//                    }
+//                    break;
+//
+//                case "getitem":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            getItem();
+//                            break;
+//                        case "c2":
+//                            northEmpty();
+//                            break;
+//                    }
+//                    break;
+//
+//                case "north":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            crossRoad();
+//                            break;
+//                        case "c2":
+//                            break;
+//                        case "c3":
+//                            break;
+//                        case "c4":
+//                            break;
+//                    }
+//                    break;
+//
+//                case "northempty":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            crossRoad();
+//                            break;
+//                        case "c2":
+//                            witch();
+//                            break;
+//                    }
+//                    break;
+//
+//                case "east":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            crossRoad();
+//                            break;
+//                        case "c2":
+//                            break;
+//                    }
+//                    break;
+//
+//                case "west":
+//                    switch (yourChoice) {
+//
+//                        case "c1":
+//                            fightGoblin();
+//                            break;
+//                        case "c2":
+//                            crossRoad();
+//                            break;
+//                    }
+//                    break;
+//
+//                case "fightgoblin":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            playerAttack();
+//                            break;
+//                        case "c2":
+//                            crossRoad();
+//                            break;
+//                    }
+//                    break;
+//
+//                case "playerattack":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            if (monsterHP < 1) {
+//                                win();
+//                            } else {
+//                                monsterAttack();
+//                            }
+//                            break;
+//                        case "c2":
+//                            break;
+//                    }
+//                    break;
+//
+//                case "monsterattack":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            if (playerHP < 1) {
+//                                lose();
+//                            } else {
+//                                fightGoblin();
+//                            }
+//                            break;
+//                        case "c2":
+//                            break;
+//                    }
+//                    break;
+//
+//                case "lose":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            startOver();
+//                            break;
+//                        case "c2":
+//                            quitGame();
+//                            break;
+//                    }
+//                    break;
+//
+//                case "win":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            crossRoad();
+//                            break;
+//                    }
+//                    break;
+//
+//                case "ending":
+//                    switch (yourChoice) {
+//                        case "c1":
+//                            quitGame();
+//                            break;
+//                    }
+//                    break;
+//            }
 
         }
     }
@@ -2174,3 +1963,4 @@ public class Ui {
         }
     }
 }
+*/
